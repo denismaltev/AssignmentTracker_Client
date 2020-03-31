@@ -7,10 +7,12 @@ Homework tracking app.
 * Must-Have Features
     * Authentication
       * Create & Delete User
-    * Create Assignment
-    * Delete Assignment
-    * Complete Assignment
-    * Edit Assignment
+    * Assignment
+      * Create Assignment
+      * Delete Assignment
+      * Complete Assignment
+      * Edit Assignment
+    * Storage for User's Assignments
   
 * Nice-to-Have Features
     * Assignment Categories
