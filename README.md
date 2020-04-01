@@ -29,5 +29,7 @@ Homework tracking app.
     
 
 ## Prototypye
+[Check it out here](https://xd.adobe.com/view/c04e3ed0-7a42-49be-5973-41fd2cdefff8-b67f/)
+
 ![Image of Screens](images/1.png)
 
