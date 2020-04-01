@@ -22,6 +22,7 @@ Homework tracking app.
       * Add Category to Assignment
     * Notifications for Assignment Due Dates
     * Reorder Assignment List
+    * Calendar View of Assignments
       
 * Future Enhancement
     * Share assignments with other users
