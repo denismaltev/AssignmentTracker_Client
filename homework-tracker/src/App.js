@@ -1,13 +1,26 @@
 import React from "react";
 import "./App.css";
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import MyAssignments from "./components/MyAssignments";
+import Login from './components/authentication/Login';
+import NavBar from "./components/NavBar";
+import Register from "./components/authentication/Register";
+import PrivateRoute from "./components/authentication/PrivateRoute";
 
 function App() {
   return (
-    <div className="App">
-      <MyAssignments />
-    </div>
+    <Router>
+      <div>
+        <NavBar />
+        <Switch>
+          <PrivateRoute exact path="/assignments" component={MyAssignments} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/register" component={Register} />
+          <Route exact path="/" component={MyAssignments} />
+        </Switch>
+      </div>
+    </Router>
   );
 }
-
+ 
 export default App;
