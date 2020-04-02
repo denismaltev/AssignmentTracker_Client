@@ -1,15 +1,12 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from "react";
 import app from "./firebase";
 
-// Create context to propagate data throughout React tree
 export const AuthContext = React.createContext();
 
-export const AuthProvider = ({children}) => {
+export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const [pending, setPending] = useState(true);
 
-
-  // Run only once
   useEffect(() => {
     app.auth().onAuthStateChanged((user) => {
       setCurrentUser(user)
@@ -30,4 +27,4 @@ export const AuthProvider = ({children}) => {
       {children}
     </AuthContext.Provider>
   );
-}
+};
