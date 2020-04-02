@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import Assignment from "./Assignment";
+import  Logo  from '../assets/Logo.png'
 
 // fake data must be replaced with data from DB
 const fakeDataArray = [
@@ -32,36 +33,45 @@ const fakeDataArray = [
 
 export default function MyAssignments() {
   const [active, setActive] = useState(true);
-  const [complited, setComplited] = useState(true);
+  const [completed, setCompleted] = useState(true);
 
   function showAllAssignments() {
-    setComplited(true);
+    setCompleted(true);
     setActive(true);
   }
 
   function showOnlyActiveAssignments() {
-    setComplited(false);
+    setCompleted(false);
     setActive(true);
   }
 
-  function showOnlyComplitedAssignments() {
-    setComplited(true);
+  function showOnlyCompletedAssignments() {
+    setCompleted(true);
     setActive(false);
   }
 
   return (
     <div>
+      <div className="header">
+        <div className="brand">
+      <img src= {Logo} />
       <h1>My Assignments</h1>
-      <Button onClick={showAllAssignments}>All</Button>
-      <Button onClick={showOnlyActiveAssignments}>Active</Button>
-      <Button onClick={showOnlyComplitedAssignments}>Completed</Button>
+      </div>
+      <div className="sortLinks">
+      <p className="headerLink" onClick={showAllAssignments}>All</p>
+      <p className="headerLink" onClick={showOnlyActiveAssignments}>Active</p>
+      <p className="headerLink" onClick={showOnlyCompletedAssignments}>Completed</p>
+      </div>
+      </div>
+      <div className="wrapper">
       {fakeDataArray.map(assignment =>
-        (complited && assignment.isDone) || (active && !assignment.isDone) ? (
+        (completed && assignment.isDone) || (active && !assignment.isDone) ? (
           <Assignment key={assignment.title} assignment={assignment} />
         ) : (
           <p key={assignment.title}></p>
         )
       )}
+      </div>
     </div>
   );
 }
