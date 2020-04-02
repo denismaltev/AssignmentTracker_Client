@@ -1,4 +1,4 @@
-import React, { useCallback, useContext } from "react";
+import React, { useCallback, useContext, useReducer } from "react";
 import { withRouter, Redirect, Link } from "react-router-dom";
 import app from "./firebase";
 import { AuthContext } from "./Auth.js";
@@ -23,6 +23,7 @@ const Login = ({ history }) => {
   const { currentUser } = useContext(AuthContext);
 
   if (currentUser) {
+		console.log(app.auth().currentUser.getIdToken())
     return <Redirect to="/" />;
   }
 
@@ -40,7 +41,7 @@ const Login = ({ history }) => {
         </label>
         <button type="submit">Login</button>
       </form>
-			<p>Don't have an account? <Link to="/register">Register here.</Link></p>
+			<p>Not a member? <Link to="/register">Register</Link></p>
     </div>
   );
 };
