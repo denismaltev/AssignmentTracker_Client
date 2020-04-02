@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPen, faTimes } from '@fortawesome/free-solid-svg-icons'
 
 export default function Assignment(props) {
   const [refreshComponent, setRefreshComponent] = useState(false);
   const [isShown, setIsShown] = useState(false)
+
 
   const deleteAssignment = async () => {
     // No logic yet
@@ -34,17 +37,10 @@ export default function Assignment(props) {
     >
     {isShown &&(
       <div className="CardFunctions">
-
-                <Button 
-                onClick={editAssignment} 
-                style={{ color: "green" }}>
-                E
-              </Button>
-              <Button 
-                onClick={deleteAssignment} 
-                style={{ color: "red" }}>
-                X
-              </Button>
+              <FontAwesomeIcon icon={faPen}
+              onClick={editAssignment}  />
+              <FontAwesomeIcon icon={faTimes}
+              onClick={deleteAssignment}  />
               </div>
         )}
       {props.assignment.isDone ? (
