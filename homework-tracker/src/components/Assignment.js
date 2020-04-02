@@ -3,6 +3,8 @@ import { Button } from "react-bootstrap";
 
 export default function Assignment(props) {
   const [refreshComponent, setRefreshComponent] = useState(false);
+  const [isShown, setIsShown] = useState(false)
+
   const deleteAssignment = async () => {
     // No logic yet
     alert("DELETE request to DB");
@@ -26,13 +28,25 @@ export default function Assignment(props) {
   }, [refreshComponent]);
 
   return (
-    <div>
-      <Button onClick={editAssignment} style={{ color: "green" }}>
-        E
-      </Button>
-      <Button onClick={deleteAssignment} style={{ color: "red" }}>
-        X
-      </Button>
+    <div className="Card"
+    onMouseEnter= {() => setIsShown(true)}
+    onMouseLeave={()=> setIsShown(false)}
+    >
+    {isShown &&(
+      <div className="CardFunctions">
+
+                <Button 
+                onClick={editAssignment} 
+                style={{ color: "green" }}>
+                E
+              </Button>
+              <Button 
+                onClick={deleteAssignment} 
+                style={{ color: "red" }}>
+                X
+              </Button>
+              </div>
+        )}
       {props.assignment.isDone ? (
         <strike>
           <h4>

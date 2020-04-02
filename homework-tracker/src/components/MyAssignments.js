@@ -32,20 +32,20 @@ const fakeDataArray = [
 
 export default function MyAssignments() {
   const [active, setActive] = useState(true);
-  const [complited, setComplited] = useState(true);
+  const [completed, setCompleted] = useState(true);
 
   function showAllAssignments() {
-    setComplited(true);
+    setCompleted(true);
     setActive(true);
   }
 
   function showOnlyActiveAssignments() {
-    setComplited(false);
+    setCompleted(false);
     setActive(true);
   }
 
-  function showOnlyComplitedAssignments() {
-    setComplited(true);
+  function showOnlyCompletedAssignments() {
+    setCompleted(true);
     setActive(false);
   }
 
@@ -54,9 +54,9 @@ export default function MyAssignments() {
       <h1>My Assignments</h1>
       <Button onClick={showAllAssignments}>All</Button>
       <Button onClick={showOnlyActiveAssignments}>Active</Button>
-      <Button onClick={showOnlyComplitedAssignments}>Completed</Button>
+      <Button onClick={showOnlyCompletedAssignments}>Completed</Button>
       {fakeDataArray.map(assignment =>
-        (complited && assignment.isDone) || (active && !assignment.isDone) ? (
+        (completed && assignment.isDone) || (active && !assignment.isDone) ? (
           <Assignment key={assignment.title} assignment={assignment} />
         ) : (
           <p key={assignment.title}></p>
