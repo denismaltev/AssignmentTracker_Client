@@ -6,20 +6,22 @@ import Login from './components/authentication/Login';
 import NavBar from "./components/NavBar";
 import Register from "./components/authentication/Register";
 import PrivateRoute from "./components/authentication/PrivateRoute";
+import {AuthProvider} from './components/authentication/Auth';
 
 function App() {
   return (
-    <Router>
-      <div>
-        <NavBar />
-        <Switch>
-          <PrivateRoute exact path="/assignments" component={MyAssignments} />
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/register" component={Register} />
-          <Route exact path="/" component={MyAssignments} />
-        </Switch>
-      </div>
-    </Router>
+    <AuthProvider>
+      <Router>
+        <div>
+          <NavBar />
+          <Switch>
+            <PrivateRoute exact path="/" component={MyAssignments} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/register" component={Register} />
+          </Switch>
+        </div>
+      </Router>
+    </AuthProvider>
   );
 }
  
