@@ -53,14 +53,17 @@ export default function MyAssignments() {
   return (
     <div>
       <div className="header">
+        <div className="brand">
       <img src= {Logo} />
       <h1>My Assignments</h1>
-      <div className="sortButtons">
-      <Button className="headerButton" onClick={showAllAssignments}>All</Button>
-      <Button className="headerButton" onClick={showOnlyActiveAssignments}>Active</Button>
-      <Button className="headerButton" onClick={showOnlyCompletedAssignments}>Completed</Button>
+      </div>
+      <div className="sortLinks">
+      <p className="headerLink" onClick={showAllAssignments}>All</p>
+      <p className="headerLink" onClick={showOnlyActiveAssignments}>Active</p>
+      <p className="headerLink" onClick={showOnlyCompletedAssignments}>Completed</p>
       </div>
       </div>
+      <div className="wrapper">
       {fakeDataArray.map(assignment =>
         (completed && assignment.isDone) || (active && !assignment.isDone) ? (
           <Assignment key={assignment.title} assignment={assignment} />
@@ -68,6 +71,7 @@ export default function MyAssignments() {
           <p key={assignment.title}></p>
         )
       )}
+      </div>
     </div>
   );
 }

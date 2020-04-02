@@ -14,7 +14,14 @@
 
 .header {
   display: flex;
-  flex: 1
+  flex: 1;
+  justify-content: space-between;
+  padding-bottom: 3rem;
+  width: 80%
+}
+ 
+.brand {
+  display: flex;
 }
 
 .header img {
@@ -32,15 +39,76 @@
   font-size: 3.5rem;
 }
 
-.sortButtons {
-  justify-items: flex-end;
+.sortLinks {
+  display: flex;
+  align-self: flex-end;
+  justify-content: space-evenly;
+}
+
+.headerLink {
+  border: none;
+  color: #adadad;
+  font-size: 1.25rem;
+  margin-right: 1rem;
+  text-align: center;
+
+}
+
+.headerLink:hover {
+  text-decoration: none;
+  border-bottom: 1px solid #f25244
+}
+
+/* .headerLink:active,
+.headerLink:focus {
+  color: #0D0D0D;
+  border-bottom: 1px solid #f25244
+} */
+
+@media screen and (max-width: 1000px) {
+  .header {
+    flex-direction: column;
+    width: 100%
+  }
+
+  .header h1 {
+    font-size: 2.7rem;
+  }
+
+  .header img {
+    width: 6rem;
+    height: 6rem;
+  }
+
+  .headerLink {
+    font-size: 1.1rem;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .header h1 {
+    font-size: 1.7rem;
+  }
+
+  .header img {
+    width: 5rem;
+    height: 5rem;
+  }
+
+  .headerLink {
+    font-size: 1rem;
+  }
+}
+
+.wrapper {
+  margin: 0 auto
 }
 
 .Card {
   width: 60%;
   border: 1px solid #adadad;
   border-radius: 1.5rem;
-  margin-bottom: 2rem;
+  margin: 0 auto 2rem;
   padding: 1rem;
 }
 
