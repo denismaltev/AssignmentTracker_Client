@@ -5,6 +5,7 @@ import MyAssignments from "./components/MyAssignments";
 import Login from './components/authentication/Login';
 import NavBar from "./components/NavBar";
 import Register from "./components/authentication/Register";
+import PrivateRoute from "./components/authentication/PrivateRoute";
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
       <div>
         <NavBar />
         <Switch>
-          <Route exact path="/" component={MyAssignments} />
+          <PrivateRoute exact path="/" component={MyAssignments} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
         </Switch>
