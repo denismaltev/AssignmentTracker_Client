@@ -13,9 +13,10 @@ function App() {
       <div>
         <NavBar />
         <Switch>
-          <PrivateRoute exact path="/" component={MyAssignments} />
+          <PrivateRoute exact path="/assignments" component={MyAssignments} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
+          <Route exact path="/" component={MyAssignments} />
         </Switch>
       </div>
     </Router>

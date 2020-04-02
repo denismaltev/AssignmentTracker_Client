@@ -1,18 +1,47 @@
-import React, { useState } from 'react'
+import React, { useCallback, useContext } from 'react';
+import { withRouter, Redirect } from 'react-router-dom';
+import app from './firebase';
+import { AuthContext } from './Auth';
 
-export default function Login() {
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
+const Login = ({ history }) => {
+	const handleLogin = useCallback(
+		async event => {
+			event.preventDefault();
+			const { email, password } = event.target.elements;
+			try {
+				await app
+					.auth()
+					.signInWithEmailAndPassword(email.value, password.value);
+				history.push('/');
+			} catch (error) {
+				console.log(error);
+			}
+		},
+		[history]
+	);
 
-    return (
-        <div className="LoginWrapper">
-            <form>
-                <FormGroup controlId="username">
-                    <ControlLabel>Username</ControlLabel>
-                </FormGroup>
-            </form>
+	const { currentUser } = useContext(AuthContext);
 
-        </div>
+	if (currentUser) {
+		return <Redirect to="/" />;
+	}
 
-    )
+	return (
+		<div>
+			<h1>Login</h1>
+			<form onSubmit={handleLogin}>
+				<label>
+					Email
+          <input name="email" type="email" placeholder="Email" />
+				</label>
+				<label>
+					Password
+          <input name="password" type="password" placeholder="Password" />
+				</label>
+				<button type="submit">Login</button>
+			</form>
+		</div>
+	);
 }
+
+export default withRouter(Login);
