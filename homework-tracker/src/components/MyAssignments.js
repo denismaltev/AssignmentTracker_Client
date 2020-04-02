@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import Assignment from "./Assignment";
+import  Logo  from '../assets/Logo.png'
 
 // fake data must be replaced with data from DB
 const fakeDataArray = [
@@ -51,10 +52,15 @@ export default function MyAssignments() {
 
   return (
     <div>
+      <div className="header">
+      <img src= {Logo} />
       <h1>My Assignments</h1>
-      <Button onClick={showAllAssignments}>All</Button>
-      <Button onClick={showOnlyActiveAssignments}>Active</Button>
-      <Button onClick={showOnlyCompletedAssignments}>Completed</Button>
+      <div className="sortButtons">
+      <Button className="headerButton" onClick={showAllAssignments}>All</Button>
+      <Button className="headerButton" onClick={showOnlyActiveAssignments}>Active</Button>
+      <Button className="headerButton" onClick={showOnlyCompletedAssignments}>Completed</Button>
+      </div>
+      </div>
       {fakeDataArray.map(assignment =>
         (completed && assignment.isDone) || (active && !assignment.isDone) ? (
           <Assignment key={assignment.title} assignment={assignment} />

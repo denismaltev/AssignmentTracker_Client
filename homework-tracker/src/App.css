@@ -3,6 +3,8 @@
 .App {
   margin: 0;
   font-family: "raleway", sans-serif;
+  color: #0D0D0D;
+  padding: 3rem;
 }
 
 .App h1, h2, h3, h4 {
@@ -10,4 +12,40 @@
   font-weight: 400;
 }
 
+.header {
+  display: flex;
+  flex: 1
+}
 
+.header img {
+  width: 7.5rem;
+  height: 7.5rem;
+  margin-right: 2rem;
+  aspect-ratio: fixed;
+}
+
+.header h1 {
+  color: #A6038B;
+  font-weight: 500;
+  align-self: flex-end;
+  padding-top: 1rem;
+  font-size: 3.5rem;
+}
+
+.sortButtons {
+  justify-items: flex-end;
+}
+
+.Card {
+  width: 60%;
+  border: 1px solid #adadad;
+  border-radius: 1.5rem;
+  margin-bottom: 2rem;
+  padding: 1rem;
+}
+
+.Card h4 {
+  color: #A6038B;
+  font-size:2.1rem;
+  margin: 1rem
+}
