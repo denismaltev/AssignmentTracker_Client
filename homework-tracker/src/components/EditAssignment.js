@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Logo from "../assets/Logo.png";
+import { Link } from "react-router-dom";
 
 export default function EditAssignment(props) {
   const assignment = props.location.state.assignment;
@@ -40,7 +41,9 @@ export default function EditAssignment(props) {
     <div>
       <div className="header">
         <div className="brand">
-          <img src={Logo} />
+          <Link to="/">
+            <img src={Logo} />
+          </Link>
           <h1>Edit Assignment</h1>
         </div>
       </div>

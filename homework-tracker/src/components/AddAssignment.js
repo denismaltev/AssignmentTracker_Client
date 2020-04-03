@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Logo from "../assets/Logo.png";
+import { Link } from "react-router-dom";
 
 export default function AddAssignment() {
   const [errorMessage, setErrorMesage] = useState("");
@@ -28,7 +29,9 @@ export default function AddAssignment() {
     <div>
       <div className="header">
         <div className="brand">
-          <img src={Logo} />
+          <Link to="/">
+            <img src={Logo} />
+          </Link>
           <h1>Add Assignment</h1>
         </div>
       </div>
