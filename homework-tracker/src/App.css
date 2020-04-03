@@ -174,17 +174,6 @@ h1, h2, h3, h4 {
   color: #F27329
 }
 
-@media screen and (max-width: 830px) {
-  .DueDate {
-    margin-top: 1rem
-  }
-
-  .Card {
-    width: 80%
-  }
-
-}
-
 @media screen and (max-width: 500px) {
   .Card h4 {
     font-size: 1.5rem;
@@ -210,6 +199,16 @@ h1, h2, h3, h4 {
     font-size: .9rem;
   }
 
+}
+
+@media screen and (max-width: 1000px) {
+  .Card {
+    width: 80%
+  }
+  
+  .DueDate {
+    margin-top: 0rem
+  }
 }
 
 
