@@ -1,13 +1,18 @@
-import React, { useCallback, useContext, useReducer } from "react";
+import React, { useCallback, useContext, useState } from "react";
 import { withRouter, Redirect, Link } from "react-router-dom";
 import app from "./firebase";
 import { AuthContext } from "./Auth.js";
 
 const Login = ({ history }) => {
+	const [error, setError] = useState('');
+
   const handleLogin = useCallback(
     async event => {
       event.preventDefault();
-      const { email, password } = event.target.elements;
+			const { email, password } = event.target.elements;
+			let validated = handleValidation(email.value, password.value);
+			if (!validated) { return }
+
       try {
         await app
           .auth()
@@ -18,7 +23,14 @@ const Login = ({ history }) => {
       }
     },
     [history]
-  );
+	);
+	
+	const handleValidation = (email, password) => {
+    if (!email || !password) {
+      setError('You must fill in all fields');
+      return false;
+    }
+  }
 
   const { currentUser } = useContext(AuthContext);
 
@@ -30,6 +42,10 @@ const Login = ({ history }) => {
   return (
     <div>
       <h1>Login</h1>
+			{error ? (
+        <p>{error}</p>
+      ) : null
+      }
       <form onSubmit={handleLogin}>
         <label>
           Email
