@@ -29,7 +29,8 @@ const Login = ({ history }) => {
     if (!email || !password) {
       setError('You must fill in all fields');
       return false;
-    }
+		}
+		return true;
   }
 
   const { currentUser } = useContext(AuthContext);
