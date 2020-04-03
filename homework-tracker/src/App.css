@@ -68,7 +68,7 @@ h1, h2, h3, h4 {
 @media screen and (max-width: 1000px) {
   .header {
     flex-direction: column;
-    width: 100%
+    width: 90%
   }
 
   .header h1 {
@@ -174,5 +174,42 @@ h1, h2, h3, h4 {
   color: #F27329
 }
 
+@media screen and (max-width: 830px) {
+  .DueDate {
+    margin-top: 1rem
+  }
+
+  .Card {
+    width: 80%
+  }
+
+}
+
+@media screen and (max-width: 500px) {
+  .Card h4 {
+    font-size: 1.5rem;
+  }
+
+  .edit {
+    font-size: 1.5rem;
+  }
+
+  .delete {
+    font-size: 2rem;;
+  }
+
+  .notification {
+    font-size: 1.3rem;
+  }
+
+  .CardDescription {
+    font-size: 0.9rem;
+  }
+
+  .DueDate {
+    font-size: .9rem;
+  }
+
+}
 
 
