@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPen, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faPen, faTimes, faBell } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 export default function Assignment(props) {
   const [refreshComponent, setRefreshComponent] = useState(false);
   const [isShown, setIsShown] = useState(false);
+  const [notify, setNotify] = useState(false);
 
   const deleteAssignment = async () => {
     // No logic yet
@@ -22,6 +23,14 @@ export default function Assignment(props) {
     setRefreshComponent(true);
   }
 
+  function isNotifyChange() {
+    if (notify) {
+      setNotify(false);
+    } else {
+      setNotify(true);
+    }
+  }
+
   useEffect(() => {
     setRefreshComponent(false);
   }, [refreshComponent]);
@@ -32,32 +41,58 @@ export default function Assignment(props) {
       onMouseEnter={() => setIsShown(true)}
       onMouseLeave={() => setIsShown(false)}
     >
-      {isShown && (
-        <div className="CardFunctions">
-          <Link
-            to={{ pathname: "/edit", state: { assignment: props.assignment } }}
-          >
-            <FontAwesomeIcon icon={faPen} />
-          </Link>
-          <FontAwesomeIcon icon={faTimes} onClick={deleteAssignment} />
-        </div>
-      )}
-      {props.assignment.isDone ? (
-        <strike>
-          <h4>
-            <div onClick={isDoneChange}>{props.assignment.title}</div>
-          </h4>
-        </strike>
-      ) : (
-        <div>
-          <h4>
-            <div onClick={isDoneChange}>{props.assignment.title}</div>
-          </h4>
-        </div>
-      )}
-      <p>{props.assignment.description}</p>
-      <p>{props.assignment.date}</p>
-      <p>=============================</p>
+      <div className="CardHeading">
+        {props.assignment.isDone ? (
+          <strike>
+            <h4>
+              <div onClick={isDoneChange}>{props.assignment.title}</div>
+            </h4>
+          </strike>
+        ) : (
+          <div>
+            <h4>
+              <div onClick={isDoneChange}>{props.assignment.title}</div>
+            </h4>
+          </div>
+        )}
+        {isShown && (
+          <div className="CardFunctions">
+            <Link
+              to={{
+                pathname: "/edit",
+                state: { assignment: props.assignment }
+              }}
+            >
+              <FontAwesomeIcon icon={faPen} />
+            </Link>
+            <FontAwesomeIcon
+              className="delete"
+              icon={faTimes}
+              onClick={deleteAssignment}
+            />
+          </div>
+        )}
+      </div>
+      <p className="CardDescription">{props.assignment.description}</p>
+      <div className="DueDate">
+        <p className="CardDate">
+          <span className="DueDateTitle">Due Date: </span>
+          {props.assignment.date}
+        </p>
+        {notify ? (
+          <FontAwesomeIcon
+            className="notification notifyOn"
+            icon={faBell}
+            onClick={isNotifyChange}
+          />
+        ) : (
+          <FontAwesomeIcon
+            className="notification notifyOff"
+            icon={faBell}
+            onClick={isNotifyChange}
+          />
+        )}
+      </div>
     </div>
   );
 }
