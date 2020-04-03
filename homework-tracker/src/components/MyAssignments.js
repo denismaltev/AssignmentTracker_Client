@@ -4,6 +4,7 @@ import Assignment from "./Assignment";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import Logo from "../assets/Logo.png";
 
 // fake data must be replaced with data from DB
 const fakeDataArray = [
@@ -56,6 +57,7 @@ export default function MyAssignments() {
     <div>
       <div className="header">
         <div className="brand">
+          <img src={Logo} />
           <h1>My Assignments</h1>
         </div>
         <div className="sortLinks">
