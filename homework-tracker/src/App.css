@@ -7,7 +7,7 @@
   padding: 3rem;
 }
 
-.App h1, h2, h3, h4 {
+h1, h2, h3, h4 {
   font-family: "Yanone Kaffeesatz", sans-serif;
   font-weight: 400;
 }
@@ -125,12 +125,6 @@
   margin: 1rem
 }
 
-.CardFunctions {
-  /* align-self: flex-end;
-  display: flex;
-  justify-content: center; */
-}
-
 .edit {
   color: rgba(166, 3, 139, 0.76);
   font-size: 2rem;
@@ -154,6 +148,7 @@
   align-items: center;
   justify-content: flex-end;
   margin-right:2.5rem;
+  margin-Top:-2rem;
   font-size: 1rem;
 }
 
@@ -169,6 +164,14 @@
 
 .notification {
   font-size: 1.7rem;
+}
+
+.notifyOff {
+  color: #adadad
+}
+
+.notifyOn {
+  color: #F27329
 }
 
 

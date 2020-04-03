@@ -5,7 +5,8 @@ import { faPen, faTimes, faBell} from '@fortawesome/free-solid-svg-icons'
 
 export default function Assignment(props) {
   const [refreshComponent, setRefreshComponent] = useState(false);
-  const [isShown, setIsShown] = useState(false)
+  const [isShown, setIsShown] = useState(false);
+  const [notify, setNotify] = useState(false);
 
 
   const deleteAssignment = async () => {
@@ -24,6 +25,14 @@ export default function Assignment(props) {
       props.assignment.isDone = true;
     }
     setRefreshComponent(true);
+  }
+
+  function isNotifyChange() {
+    if (notify) {
+      setNotify(false)
+    } else {
+      setNotify(true)
+    }
   }
 
   useEffect(() => {
@@ -66,7 +75,17 @@ export default function Assignment(props) {
       <p className="CardDescription">{props.assignment.description}</p>
       <div className="DueDate">
       <p className="CardDate"><span className="DueDateTitle">Due Date: </span>{props.assignment.data}</p>
-      <FontAwesomeIcon className="notification" icon={faBell} />
+      {notify ? (
+        <FontAwesomeIcon 
+          className="notification notifyOn" 
+          icon={faBell} 
+          onClick={isNotifyChange} />
+          ) : (
+          <FontAwesomeIcon 
+            className="notification notifyOff" 
+            icon={faBell} 
+            onClick={isNotifyChange} />
+          )}
       </div>
     </div>
   );
