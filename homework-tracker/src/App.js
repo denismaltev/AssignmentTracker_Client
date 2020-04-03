@@ -3,6 +3,7 @@ import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import MyAssignments from "./components/MyAssignments";
 import AddAssignment from "./components/AddAssignment";
+import EditAssignment from "./components/EditAssignment";
 import Login from "./components/authentication/Login";
 import NavBar from "./components/NavBar";
 import Register from "./components/authentication/Register";
@@ -18,6 +19,7 @@ function App() {
           <Switch>
             <PrivateRoute exact path="/" component={MyAssignments} />
             <PrivateRoute exact path="/add" component={AddAssignment} />
+            <PrivateRoute exact path="/edit" component={EditAssignment} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/register" component={Register} />
           </Switch>
