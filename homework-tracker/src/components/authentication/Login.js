@@ -2,6 +2,7 @@ import React, { useCallback, useContext, useState } from "react";
 import { withRouter, Redirect, Link } from "react-router-dom";
 import app from "./firebase";
 import { AuthContext } from "./Auth.js";
+import Logo from '../../../assets/Logo.png';
 
 const Login = ({ history }) => {
 	const [error, setError] = useState('');
@@ -41,24 +42,27 @@ const Login = ({ history }) => {
   }
 
   return (
-    <div>
-      <h1>Login</h1>
-			{error ? (
-        <p>{error}</p>
-      ) : null
-      }
-      <form onSubmit={handleLogin}>
-        <label>
-          Email
-          <input name="email" type="email" placeholder="Email" />
-        </label>
-        <label>
-          Password
-          <input name="password" type="password" placeholder="Password" />
-        </label>
-        <button type="submit">Login</button>
-      </form>
-			<p>Not a member? <Link to="/register">Register</Link></p>
+    <div className="Login">
+      <img src={Logo} alt="Homework Helper Logo" />
+      <div className="login__form-wrapper">
+        <h1>Login</h1>
+  			{error ? (
+          <p>{error}</p>
+        ) : null
+        }
+        <form onSubmit={handleLogin}>
+          <label>
+            Email
+            <input name="email" type="email" placeholder="Email" />
+          </label>
+          <label>
+            Password
+            <input name="password" type="password" placeholder="Password" />
+          </label>
+          <button type="submit">Login</button>
+        </form>
+  			<p>Not a member? <Link to="/register">Register</Link></p>
+      </div>
     </div>
   );
 };
