@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import Assignment from "./Assignment";
-import  Logo  from '../assets/Logo.png'
+import Logo from "../assets/Logo.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 // fake data must be replaced with data from DB
 const fakeDataArray = [
@@ -54,23 +57,35 @@ export default function MyAssignments() {
     <div>
       <div className="header">
         <div className="brand">
-      <img src= {Logo} />
-      <h1>My Assignments</h1>
-      </div>
-      <div className="sortLinks">
-      <p className="headerLink" onClick={showAllAssignments}>All</p>
-      <p className="headerLink" onClick={showOnlyActiveAssignments}>Active</p>
-      <p className="headerLink" onClick={showOnlyCompletedAssignments}>Completed</p>
-      </div>
+          <img src={Logo} />
+          <h1>My Assignments</h1>
+        </div>
+        <div className="sortLinks">
+          <p className="headerLink" onClick={showAllAssignments}>
+            All
+          </p>
+          <p className="headerLink" onClick={showOnlyActiveAssignments}>
+            Active
+          </p>
+          <p className="headerLink" onClick={showOnlyCompletedAssignments}>
+            Completed
+          </p>
+        </div>
       </div>
       <div className="wrapper">
-      {fakeDataArray.map(assignment =>
-        (completed && assignment.isDone) || (active && !assignment.isDone) ? (
-          <Assignment key={assignment.title} assignment={assignment} />
-        ) : (
-          <p key={assignment.title}></p>
-        )
-      )}
+        <Link to="/add">
+          <FontAwesomeIcon
+            style={{ fontSize: 40, color: "orange" }}
+            icon={faPlusCircle}
+          />
+        </Link>
+        {fakeDataArray.map(assignment =>
+          (completed && assignment.isDone) || (active && !assignment.isDone) ? (
+            <Assignment key={assignment.title} assignment={assignment} />
+          ) : (
+            <p key={assignment.title}></p>
+          )
+        )}
       </div>
     </div>
   );
