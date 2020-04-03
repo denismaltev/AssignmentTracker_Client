@@ -1,11 +1,16 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import app from './authentication/firebase';
+import {AuthContext} from './authentication/Auth';
 
 const NavBar = () => {
+  const { currentUser } = useContext(AuthContext);
+
   return ( 
     <div>
-      <img src="../assets/Logo.png" alt="Homework Helper Logo"/>
-      <button onClick={() => app.auth().signOut()}>Logout</button>
+      {currentUser ? (
+        <button onClick={() => app.auth().signOut()}>Logout</button>
+      ) : null
+      }
     </div>
    );
 }
