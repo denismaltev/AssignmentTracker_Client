@@ -12,10 +12,6 @@ export default function Assignment(props) {
     // No logic yet
     alert("DELETE request to DB");
   };
-  const editAssignment = async () => {
-    // No logic yet
-    alert("PUT request to DB");
-  };
 
   function isDoneChange() {
     if (props.assignment.isDone) {
@@ -41,7 +37,7 @@ export default function Assignment(props) {
           <Link
             to={{ pathname: "/edit", state: { assignment: props.assignment } }}
           >
-            <FontAwesomeIcon icon={faPen} onClick={editAssignment} />
+            <FontAwesomeIcon icon={faPen} />
           </Link>
           <FontAwesomeIcon icon={faTimes} onClick={deleteAssignment} />
         </div>
@@ -60,7 +56,7 @@ export default function Assignment(props) {
         </div>
       )}
       <p>{props.assignment.description}</p>
-      <p>{props.assignment.data}</p>
+      <p>{props.assignment.date}</p>
       <p>=============================</p>
     </div>
   );

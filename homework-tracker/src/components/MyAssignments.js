@@ -11,25 +11,25 @@ const fakeDataArray = [
   {
     title: "Final Assignment - SSD",
     description: "Group Project Web APP",
-    data: "01-07-2019",
+    date: "01-07-2019",
     isDone: false
   },
   {
     title: "FullStack JS",
     description: " bla bla bla",
-    data: "01-03-2019",
+    date: "01-03-2019",
     isDone: false
   },
   {
     title: "Passion Project",
     description: "bla bla bla2",
-    data: "01-08-2019",
+    date: "01-08-2019",
     isDone: true
   },
   {
     title: "bla bla Project",
     description: "bla bla bla3",
-    data: "01-05-2019",
+    date: "01-05-2019",
     isDone: true
   }
 ];
