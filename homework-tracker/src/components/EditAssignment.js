@@ -14,6 +14,12 @@ export default function EditAssignment(props) {
     // Validation
     if (title.value === "" || date.value === "") {
       setErrorMesage("Error: Please fill all required fields");
+    } else if (
+      title.value === assignment.title &&
+      description.value === assignment.description &&
+      date.value === assignment.date
+    ) {
+      setErrorMesage("No changes detected");
     } else {
       setErrorMesage("");
       // Here should be PUT-request
@@ -24,7 +30,6 @@ export default function EditAssignment(props) {
 
   const clearForm = event => {
     event.preventDefault();
-    //document.getElementById("add-assignment-form").reset();
     setTitle(assignment.title);
     setDescription(assignment.description);
     setDate(assignment.date);
