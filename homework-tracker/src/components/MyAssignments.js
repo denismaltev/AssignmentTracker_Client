@@ -1,35 +1,35 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import Assignment from "./Assignment";
-import Logo from "../assets/Logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import Logo from "../assets/Logo.png";
 
 // fake data must be replaced with data from DB
 const fakeDataArray = [
   {
     title: "Final Assignment - SSD",
     description: "Group Project Web APP",
-    data: "April 8 2020",
+    date: new Date(2020, 2, 20).toISOString().slice(0, 10),
     isDone: false
   },
   {
     title: "FullStack JS",
     description: " bla bla bla",
-    data: "April 10 2020",
+    date: new Date(2020, 4, 11).toISOString().slice(0, 10),
     isDone: false
   },
   {
     title: "Passion Project",
     description: "bla bla bla2",
-    data: "March 30 2020",
+    date: new Date(2020, 4, 22).toISOString().slice(0, 10),
     isDone: true
   },
   {
     title: "bla bla Project",
     description: "bla bla bla3",
-    data: "March 12 2020",
+    date: new Date(2020, 5, 1).toISOString().slice(0, 10),
     isDone: true
   }
 ];
