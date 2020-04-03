@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPen, faTimes } from '@fortawesome/free-solid-svg-icons'
+import { faPen, faTimes, faBell} from '@fortawesome/free-solid-svg-icons'
 
 export default function Assignment(props) {
   const [refreshComponent, setRefreshComponent] = useState(false);
@@ -35,30 +35,39 @@ export default function Assignment(props) {
     onMouseEnter= {() => setIsShown(true)}
     onMouseLeave={()=> setIsShown(false)}
     >
-    {isShown &&(
-      <div className="CardFunctions">
-              <FontAwesomeIcon icon={faPen}
-              onClick={editAssignment}  />
-              <FontAwesomeIcon icon={faTimes}
-              onClick={deleteAssignment}  />
-              </div>
-        )}
+    <div className="CardHeading">
       {props.assignment.isDone ? (
         <strike>
           <h4>
             <div onClick={isDoneChange}>{props.assignment.title}</div>
           </h4>
+          
         </strike>
       ) : (
         <div>
           <h4>
             <div onClick={isDoneChange}>{props.assignment.title}</div>
           </h4>
-        </div>
+          </div>
       )}
-      <p>{props.assignment.description}</p>
-      <p>{props.assignment.data}</p>
-      <p>=============================</p>
+       {isShown &&(
+        <div className="CardFunctions">
+              <FontAwesomeIcon 
+              className="edit"
+              icon={faPen}
+              onClick={editAssignment}  />
+              <FontAwesomeIcon 
+              className="delete"
+              icon={faTimes}
+              onClick={deleteAssignment}  />
+      </div>
+        )}
+      </div>
+      <p className="CardDescription">{props.assignment.description}</p>
+      <div className="DueDate">
+      <p className="CardDate"><span className="DueDateTitle">Due Date: </span>{props.assignment.data}</p>
+      <FontAwesomeIcon className="notification" icon={faBell} />
+      </div>
     </div>
   );
 }
