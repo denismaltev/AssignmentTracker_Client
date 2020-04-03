@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPen, faTimes } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPen, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 export default function Assignment(props) {
   const [refreshComponent, setRefreshComponent] = useState(false);
-  const [isShown, setIsShown] = useState(false)
-
+  const [isShown, setIsShown] = useState(false);
 
   const deleteAssignment = async () => {
     // No logic yet
@@ -31,18 +31,21 @@ export default function Assignment(props) {
   }, [refreshComponent]);
 
   return (
-    <div className="Card"
-    onMouseEnter= {() => setIsShown(true)}
-    onMouseLeave={()=> setIsShown(false)}
+    <div
+      className="Card"
+      onMouseEnter={() => setIsShown(true)}
+      onMouseLeave={() => setIsShown(false)}
     >
-    {isShown &&(
-      <div className="CardFunctions">
-              <FontAwesomeIcon icon={faPen}
-              onClick={editAssignment}  />
-              <FontAwesomeIcon icon={faTimes}
-              onClick={deleteAssignment}  />
-              </div>
-        )}
+      {isShown && (
+        <div className="CardFunctions">
+          <Link
+            to={{ pathname: "/edit", state: { assignment: props.assignment } }}
+          >
+            <FontAwesomeIcon icon={faPen} onClick={editAssignment} />
+          </Link>
+          <FontAwesomeIcon icon={faTimes} onClick={deleteAssignment} />
+        </div>
+      )}
       {props.assignment.isDone ? (
         <strike>
           <h4>
