@@ -9,6 +9,7 @@ export default function AddAssignment() {
 
     // Here should be POST-request
     alert(`POST-request: ${title.value} ${description.value} ${date.value}`);
+    document.getElementById("add-assignment-form").reset();
   };
 
   const clearForm = event => {
