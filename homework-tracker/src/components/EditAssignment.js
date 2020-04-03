@@ -10,7 +10,6 @@ export default function EditAssignment(props) {
 
   const createAssignment = async event => {
     event.preventDefault();
-    //console.log(assignment.date);
     const { title, description, date } = event.target.elements;
     // Validation
     if (title.value === "" || date.value === "") {
@@ -25,7 +24,10 @@ export default function EditAssignment(props) {
 
   const clearForm = event => {
     event.preventDefault();
-    document.getElementById("add-assignment-form").reset();
+    //document.getElementById("add-assignment-form").reset();
+    setTitle(assignment.title);
+    setDescription(assignment.description);
+    setDate(assignment.date);
   };
   useEffect(() => {}, [errorMessage]);
 
