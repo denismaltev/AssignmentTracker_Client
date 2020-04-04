@@ -1,3 +1,53 @@
-.Login {
-  
+.auth__container {
+  position: relative;
+  width: 500px;
+  margin: 0 auto;
+  margin-top: 200px;
+  img {
+    position: absolute;
+    max-width: 300px;
+    transform: translate(-80%, -20%);
+  }
+  .auth__form-wrapper {
+    position: absolute;
+    transform: translateX(25%);
+  }
+
+  h1 {
+    color: $main-color;
+    font-size: 3em;
+    margin-bottom: 50px;
+  }
+  input, button, p {font-family: 'raleway', sans-serif;}
+  input, button {
+    box-sizing: border-box;
+    width: 100%;
+    border-radius: 20px;
+    font-size: 1.3em;
+    padding: 14px;
+    border: 1px solid #adadad;
+  }
+  input {
+    padding-left: 50px;
+    margin-bottom: 30px;
+  }
+  button {
+    font-size: 1.3em;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    color: white;
+    background-color: transparent;
+    background-image: linear-gradient($secondary-color, rgb(225,94,75));
+  }
+  p {
+    font-size: 1.2em;
+    text-align: center;
+    margin: 0;
+
+    a {
+      text-decoration: none;
+      color: $tertiary-color;
+    }
+  }
+
 }
