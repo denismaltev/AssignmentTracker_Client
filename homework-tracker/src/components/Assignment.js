@@ -100,7 +100,11 @@ export default function Assignment(props) {
           />
         )}
       </div>
-      {isAssignmentExpired() ? <p>EXP</p> : <></>}
+      {isAssignmentExpired() ? (
+        <div style={{ color: "red" }}>EXPIRED!</div>
+      ) : (
+        <></>
+      )}
     </div>
   );
 }
