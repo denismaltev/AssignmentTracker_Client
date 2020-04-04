@@ -46,10 +46,12 @@ const Login = ({ history }) => {
       <img className="auth__logo" src={Logo} alt="Homework Helper Logo" />
       <div className="auth__form-wrapper">
         <h1>Login</h1>
-        {error ? (
-          <p>{error}</p>
-        ) : null
-        }
+        <div className="auth__error">
+          {error ? (
+            <p>{error}</p>
+          ) : null
+          }
+        </div>
         <form onSubmit={handleLogin}>
           <input name="email" type="email" placeholder="Email" aria-label="Email" />
           <input name="password" type="password" placeholder="Password" aria-label="Password" />
