@@ -11,25 +11,25 @@ const fakeDataArray = [
   {
     title: "Final Assignment - SSD",
     description: "Group Project Web APP",
-    date: new Date(2020, 2, 20).toISOString().slice(0, 10),
+    date: new Date(2020, 2, 20).toDateString().slice(0, 10),
     isDone: false
   },
   {
     title: "FullStack JS",
     description: " bla bla bla",
-    date: new Date(2020, 4, 11).toISOString().slice(0, 10),
+    date: new Date(2020, 4, 11).toDateString().slice(0, 10),
     isDone: false
   },
   {
     title: "Passion Project",
     description: "bla bla bla2",
-    date: new Date(2020, 4, 22).toISOString().slice(0, 10),
+    date: new Date(2020, 4, 22).toDateString().slice(0, 10),
     isDone: true
   },
   {
     title: "bla bla Project",
     description: "bla bla bla3",
-    date: new Date(2020, 5, 1).toISOString().slice(0, 10),
+    date: new Date(2020, 5, 1).toDateString().slice(0, 10),
     isDone: true
   }
 ];
@@ -57,7 +57,7 @@ export default function MyAssignments() {
     <div>
       <div className="header">
         <div className="brand">
-          <img src={Logo} />
+          <img src={Logo} alt="Homework Helper Logo" />
           <h1>My Assignments</h1>
         </div>
         <div className="sortLinks">
