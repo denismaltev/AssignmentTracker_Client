@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Assignment from "./Assignment";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
@@ -16,7 +16,7 @@ const fakeDataArray = [
   {
     title: "FullStack JS",
     description: " bla bla bla",
-    date: new Date(2020, 4, 11),
+    date: new Date(2020, 4, 23),
     isDone: false
   },
   {
@@ -28,7 +28,7 @@ const fakeDataArray = [
   {
     title: "bla bla Project",
     description: "bla bla bla3",
-    date: new Date(2020, 5, 1),
+    date: new Date(2020, 3, 1),
     isDone: true
   }
 ];
@@ -36,6 +36,22 @@ const fakeDataArray = [
 export default function MyAssignments() {
   const [active, setActive] = useState(true);
   const [completed, setCompleted] = useState(true);
+  const [assignments, setAssignments] = useState([]);
+
+  const getMyAssignmentsFromServer = async () => {
+    // Here fetch request GET
+    var result = fakeDataArray;
+
+    // sort assignments by date
+    result.sort((a, b) => {
+      return a.date.getTime() - b.date.getTime();
+    });
+    setAssignments(result);
+  };
+
+  useEffect(() => {
+    getMyAssignmentsFromServer();
+  }, []);
 
   function showAllAssignments() {
     setCompleted(true);
@@ -78,7 +94,7 @@ export default function MyAssignments() {
             icon={faPlusCircle}
           />
         </Link>
-        {fakeDataArray.map(assignment =>
+        {assignments.map(assignment =>
           (completed && assignment.isDone) || (active && !assignment.isDone) ? (
             <Assignment key={assignment.title} assignment={assignment} />
           ) : (
