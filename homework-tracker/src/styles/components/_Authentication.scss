@@ -16,7 +16,7 @@
     color: $main-color;
     text-transform: uppercase;
     font-size: 3.5em;
-    margin-bottom: 50px;
+    margin-bottom: 10px;
   }
   input, button, p {font-family: 'raleway', sans-serif;}
   input, button {
@@ -50,6 +50,12 @@
     }
   }
 
+  .auth__error {
+    color: $tertiary-color;
+    height: 32px;
+    padding-bottom: 5px;
+  }
+
   @media(max-width: 1040px) {
     margin-top: 20px;
     img {
@@ -72,7 +78,7 @@
     }
     h1 {
       font-size: 3em;
-      margin-bottom: 30px;
+      margin-bottom: 5px;
     }
   }
 
@@ -83,7 +89,7 @@
     }
     h1 {
       font-size: 2.5em;
-      margin-bottom: 25px;
+      margin-bottom: 0px;
     }
     input, button {
       border-radius: 15px;
@@ -100,6 +106,10 @@
     }
     p {
       font-size: 1em;
+    }
+    .auth__error {
+      height: 24px;
+      padding-bottom: 5px;
     }
   }
 }

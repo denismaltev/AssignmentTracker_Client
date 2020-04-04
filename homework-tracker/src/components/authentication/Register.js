@@ -19,7 +19,7 @@ const Register = ({ history }) => {
           .createUserWithEmailAndPassword(email.value, password.value);
         history.push('/');
       } catch (error) {
-        console.log(error);
+        console.log(error.code, error.message);
       }
     }
   }, [history]);
@@ -27,6 +27,10 @@ const Register = ({ history }) => {
   const handleValidation = (email, password, reenterPassword) => {
     if (!email || !password || !reenterPassword) {
       setError('You must fill in all fields');
+      return false;
+    }
+    if (password.length < 6) {
+      setError('Password must be at least 6 characters');
       return false;
     }
     if (password !== reenterPassword) {
@@ -41,14 +45,16 @@ const Register = ({ history }) => {
       <img className="auth__logo" src={Logo} alt="Homework Helper Logo" />
       <div className="auth__form-wrapper">
         <h1>Register</h1>
-        {error ? (
-          <p>{error}</p>
-        ) : null
-        }
+        <div className="auth__error">
+          {error ? (
+            <p>{error}</p>
+          ) : null
+          }
+        </div>
         <form onSubmit={handleRegister}>
           <input name="email" type="email" placeholder="Email" aria-label="Email" />
           <input name="password" type="password" placeholder="Password" aria-label="Password" />
-          <input name="reenterPassword" type="password" placeholder="Re-enter Password" aria-label="Re-enter Password" />
+          <input name="reenterPassword" type="password" placeholder="Re-enter password" aria-label="Re-enter Password" />
           <button type="submit">Register</button>
         </form>
         <p>Already have an account? <Link to="/login">Login</Link></p>
