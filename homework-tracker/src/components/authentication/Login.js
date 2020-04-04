@@ -20,7 +20,10 @@ const Login = ({ history }) => {
           .signInWithEmailAndPassword(email.value, password.value);
         history.push("/");
       } catch (error) {
-        alert(error);
+        if(error.code === "auth/user-not-found" || error.code === "auth/wrong-password") {
+          setError("Invalid email or password")
+        }
+        console.log(error.code)
       }
     },
     [history]

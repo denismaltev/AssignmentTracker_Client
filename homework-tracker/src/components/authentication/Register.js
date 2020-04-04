@@ -19,7 +19,7 @@ const Register = ({ history }) => {
           .createUserWithEmailAndPassword(email.value, password.value);
         history.push('/');
       } catch (error) {
-        console.log(error);
+        console.log(error.code, error.message);
       }
     }
   }, [history]);
@@ -27,6 +27,10 @@ const Register = ({ history }) => {
   const handleValidation = (email, password, reenterPassword) => {
     if (!email || !password || !reenterPassword) {
       setError('You must fill in all fields');
+      return false;
+    }
+    if (password.length < 6) {
+      setError('Password must be at least 6 characters');
       return false;
     }
     if (password !== reenterPassword) {
