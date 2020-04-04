@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Button } from "react-bootstrap";
 import Assignment from "./Assignment";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
@@ -57,7 +56,7 @@ export default function MyAssignments() {
     <div>
       <div className="header">
         <div className="brand">
-          <img src={Logo} />
+          <img alt="Logo" src={Logo} />
           <h1>My Assignments</h1>
         </div>
         <div className="sortLinks">

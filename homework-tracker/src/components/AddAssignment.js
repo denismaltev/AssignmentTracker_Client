@@ -30,7 +30,7 @@ export default function AddAssignment() {
       <div className="header">
         <div className="brand">
           <Link to="/">
-            <img src={Logo} />
+            <img alt="Logo" src={Logo} />
           </Link>
           <h1>Add Assignment</h1>
         </div>

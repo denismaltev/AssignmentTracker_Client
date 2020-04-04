@@ -42,7 +42,7 @@ export default function EditAssignment(props) {
       <div className="header">
         <div className="brand">
           <Link to="/">
-            <img src={Logo} />
+            <img alt="Logo" src={Logo} />
           </Link>
           <h1>Edit Assignment</h1>
         </div>
