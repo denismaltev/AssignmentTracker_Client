@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen, faTimes, faBell } from "@fortawesome/free-solid-svg-icons";
+import { faCircle, faCheckCircle} from '@fortawesome/free-regular-svg-icons'
 import { Link } from "react-router-dom";
 
 export default function Assignment(props) {
@@ -50,16 +51,28 @@ export default function Assignment(props) {
     >
       <div className="CardHeading">
         {props.assignment.isDone ? (
+          <div>
           <strike>
             <h4>
-              <div onClick={isDoneChange}>{props.assignment.title}</div>
+              <div onClick={isDoneChange}>{props.assignment.title}
+            </div>
             </h4>
           </strike>
+          <FontAwesomeIcon 
+            icon={faCheckCircle}
+            className="checkboxDone"
+            onClick={isDoneChange}/>
+          </div>
         ) : (
           <div>
             <h4>
-              <div onClick={isDoneChange}>{props.assignment.title}</div>
+              <div onClick={isDoneChange}>{props.assignment.title}
+            </div>
             </h4>
+            <FontAwesomeIcon 
+            icon={faCircle}
+            className="checkbox"
+            onClick={isDoneChange}/>
           </div>
         )}
         {isShown && (
@@ -70,7 +83,9 @@ export default function Assignment(props) {
                 state: { assignment: props.assignment }
               }}
             >
-              <FontAwesomeIcon icon={faPen} />
+              <FontAwesomeIcon 
+              icon={faPen}
+              className="edit" />
             </Link>
             <FontAwesomeIcon
               className="delete"

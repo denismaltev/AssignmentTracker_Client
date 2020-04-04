@@ -1,15 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway&family=Yanone+Kaffeesatz:wght@200;400;500&display=swap');
 
-.App {
+body {
   margin: 0;
   font-family: "raleway", sans-serif;
   color: #0D0D0D;
   padding: 3rem;
+  height: 100%;
 }
 
 h1, h2, h3, h4 {
   font-family: "Yanone Kaffeesatz", sans-serif;
   font-weight: 400;
+}
+
+.wrapper {
+  position: relative;
+  min-height: 100%;
 }
 
 .header {
@@ -65,10 +71,43 @@ h1, h2, h3, h4 {
   border-bottom: 1px solid #f25244
 } */
 
+.addIcon {
+  font-size: 4rem;
+  position: fixed;
+  bottom: 10%;
+  right: 11%;
+  z-index: 100;
+}
+
+.fill-gradient-linear path {
+  fill: url(#linear);
+}
+
+/* setting colors for linear gradient */
+.linear-stop1 {
+  stop-color:#F27329
+}
+
+.linear-stop2 {
+  stop-color:#f25244;
+}
+
+.linear-stop3 {
+  stop-color: #EB0080;
+}
+
+.addIcon:hover {
+  font-size: 4.1rem;
+}
+
+svg {
+  height: 0
+}
+
 @media screen and (max-width: 1000px) {
   .header {
     flex-direction: column;
-    width: 100%
+    width: 90%
   }
 
   .header h1 {
@@ -82,6 +121,24 @@ h1, h2, h3, h4 {
 
   .headerLink {
     font-size: 1.1rem;
+  }
+
+  .addIcon {
+    font-size: 3.3rem;
+    right: 2%;
+  }
+
+  .addIcon:hover {
+    font-size: 3.4rem;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .addIcon {
+    font-size: 2.8rem;
+  }
+  .addIcon:hover {
+    font-size: 2.9rem;
   }
 }
 
@@ -112,6 +169,7 @@ h1, h2, h3, h4 {
   padding: 1rem;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .CardHeading {
@@ -122,7 +180,7 @@ h1, h2, h3, h4 {
 .Card h4 {
   color: #A6038B;
   font-size:2.3rem;
-  margin: 1rem
+  margin: 1rem 0 0 4rem;
 }
 
 .edit {
@@ -137,9 +195,19 @@ h1, h2, h3, h4 {
   margin-right: 2.5rem;
 }
 
+.checkbox {
+  font-size: 2rem;
+  color: #f25244
+}
+
+.checkboxDone {
+  color: #EB0080;
+  font-size: 2rem;
+}
+
 .CardDescription {
   color: #0D0D0D;
-  margin: 0 0 0 2rem;
+  margin: -1rem 0 0 5rem;
   font-size: 1.125rem;
 }
 
@@ -174,5 +242,41 @@ h1, h2, h3, h4 {
   color: #F27329
 }
 
+@media screen and (max-width: 500px) {
+  .CardHeading h4{
+    font-size: 1.2rem;
+  }
+
+  .edit {
+    font-size: 1.3rem;
+  }
+
+  .delete {
+    font-size: 1.8rem;;
+  }
+
+  .notification {
+    font-size: 1.3rem;
+  }
+
+  .CardDescription {
+    font-size: 0.9rem;
+  }
+
+  .DueDate {
+    font-size: .9rem;
+  }
+
+}
+
+@media screen and (max-width: 1000px) {
+  .Card {
+    width: 80%
+  }
+  
+  .DueDate {
+    margin-top: 0rem
+  }
+}
 
 
