@@ -1,0 +1,8 @@
+.Card form {
+    display: flex;
+    flex-direction: column;
+
+    input {
+        border-bottom: $grey;
+    }
+}

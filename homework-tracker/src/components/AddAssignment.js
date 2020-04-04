@@ -36,7 +36,8 @@ export default function AddAssignment() {
         </div>
       </div>
       <div className="Card">
-        <form onSubmit={createAssignment} id="add-assignment-form">
+        <form 
+        onSubmit={createAssignment} id="add-assignment-form">
           <p style={{ color: "red", fontSize: 12 }}>{errorMessage}</p>
           <input name="title" type="text" placeholder="Title" />
           <input
