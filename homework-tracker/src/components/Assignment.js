@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen, faTimes, faBell } from "@fortawesome/free-solid-svg-icons";
-import { faCircle, faCheckCircle} from '@fortawesome/free-regular-svg-icons'
+import { faCircle, faCheckCircle } from "@fortawesome/free-regular-svg-icons";
 import { Link } from "react-router-dom";
 
 export default function Assignment(props) {
@@ -14,13 +14,6 @@ export default function Assignment(props) {
     // No logic yet
     alert("DELETE request to DB");
   };
-
-  function isAssignmentExpired() {
-    return today.getTime() - props.assignment.date.getTime() > 0 &&
-      !props.assignment.isDone
-      ? true
-      : false;
-  }
 
   useEffect(() => {
     setRefreshComponent(false);
@@ -43,6 +36,29 @@ export default function Assignment(props) {
     }
   }
 
+  function isAssignmentExpired() {
+    return today.getTime() - props.assignment.date.getTime() > 0 &&
+      !props.assignment.isDone
+      ? true
+      : false;
+  }
+
+  function daysLeft() {
+    return Math.ceil((props.assignment.date - today) / 1000 / 60 / 60 / 24);
+  }
+
+  function assignmentStatus() {
+    if (props.assignment.isDone) {
+      return <div style={{ color: "green" }}>DONE</div>;
+    } else if (isAssignmentExpired() && daysLeft() < 0) {
+      return <div style={{ color: "red" }}>LATE!</div>;
+    } else if (daysLeft() === 0) {
+      return <div style={{ color: "green" }}>TODAY!</div>;
+    } else {
+      return <div style={{ color: "green" }}>{daysLeft()} days left</div>;
+    }
+  }
+
   return (
     <div
       className="Card"
@@ -52,27 +68,27 @@ export default function Assignment(props) {
       <div className="CardHeading">
         {props.assignment.isDone ? (
           <div>
-          <strike>
-            <h4>
-              <div onClick={isDoneChange}>{props.assignment.title}
-            </div>
-            </h4>
-          </strike>
-          <FontAwesomeIcon 
-            icon={faCheckCircle}
-            className="checkboxDone"
-            onClick={isDoneChange}/>
+            <strike>
+              <h4>
+                <div onClick={isDoneChange}>{props.assignment.title}</div>
+              </h4>
+            </strike>
+            <FontAwesomeIcon
+              icon={faCheckCircle}
+              className="checkboxDone"
+              onClick={isDoneChange}
+            />
           </div>
         ) : (
           <div>
             <h4>
-              <div onClick={isDoneChange}>{props.assignment.title}
-            </div>
+              <div onClick={isDoneChange}>{props.assignment.title}</div>
             </h4>
-            <FontAwesomeIcon 
-            icon={faCircle}
-            className="checkbox"
-            onClick={isDoneChange}/>
+            <FontAwesomeIcon
+              icon={faCircle}
+              className="checkbox"
+              onClick={isDoneChange}
+            />
           </div>
         )}
         {isShown && (
@@ -83,9 +99,7 @@ export default function Assignment(props) {
                 state: { assignment: props.assignment }
               }}
             >
-              <FontAwesomeIcon 
-              icon={faPen}
-              className="edit" />
+              <FontAwesomeIcon icon={faPen} className="edit" />
             </Link>
             <FontAwesomeIcon
               className="delete"
@@ -115,11 +129,7 @@ export default function Assignment(props) {
           />
         )}
       </div>
-      {isAssignmentExpired() ? (
-        <div style={{ color: "red" }}>EXPIRED!</div>
-      ) : (
-        <></>
-      )}
+      {assignmentStatus()}
     </div>
   );
 }

@@ -10,25 +10,25 @@ const fakeDataArray = [
   {
     title: "Final Assignment - SSD",
     description: "Group Project Web APP",
-    date: new Date(2020, 2, 20).toDateString().slice(0, 10),
+    date: new Date(2020, 2, 20),
     isDone: false
   },
   {
     title: "FullStack JS",
     description: " bla bla bla",
-    date: new Date(2020, 4, 11).toDateString().slice(0, 10),
+    date: new Date(2020, 3, 4),
     isDone: false
   },
   {
     title: "Passion Project",
     description: "bla bla bla2",
-    date: new Date(2020, 4, 22).toDateString().slice(0, 10),
+    date: new Date(2020, 4, 22),
     isDone: true
   },
   {
     title: "bla bla Project",
     description: "bla bla bla3",
-    date: new Date(2020, 5, 1).toDateString().slice(0, 10),
+    date: new Date(2020, 5, 1),
     isDone: true
   }
 ];
@@ -104,11 +104,11 @@ export default function MyAssignments() {
       </div>
       <svg>
         <linearGradient id="linear">
-          <stop class="linear-stop1" offset="0%"></stop>
-          <stop class="linear-stop2" offset="50%"></stop>
-          <stop class="linear-stop3" offset="100%"></stop>
+          <stop className="linear-stop1" offset="0%"></stop>
+          <stop className="linear-stop2" offset="50%"></stop>
+          <stop className="linear-stop3" offset="100%"></stop>
         </linearGradient>
-    </svg>
+      </svg>
     </div>
   );
 }
