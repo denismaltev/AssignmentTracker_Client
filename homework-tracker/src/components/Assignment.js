@@ -77,7 +77,7 @@ export default function Assignment(props) {
       <div className="DueDate">
         <p className="CardDate">
           <span className="DueDateTitle">Due Date: </span>
-          {props.assignment.date}
+          {props.assignment.date.toDateString().slice(4)}
         </p>
         {notify ? (
           <FontAwesomeIcon

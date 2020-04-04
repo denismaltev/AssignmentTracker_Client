@@ -7,7 +7,7 @@ export default function EditAssignment(props) {
   const [errorMessage, setErrorMesage] = useState("");
   const [title, setTitle] = useState(assignment.title);
   const [description, setDescription] = useState(assignment.description);
-  const [date, setDate] = useState(assignment.date);
+  const [date, setDate] = useState(assignment.date.toISOString().slice(0, 10));
 
   const createAssignment = async event => {
     event.preventDefault();

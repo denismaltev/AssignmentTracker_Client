@@ -11,25 +11,25 @@ const fakeDataArray = [
   {
     title: "Final Assignment - SSD",
     description: "Group Project Web APP",
-    date: new Date(2020, 2, 20).toISOString().slice(0, 10),
+    date: new Date(2020, 2, 20),
     isDone: false
   },
   {
     title: "FullStack JS",
     description: " bla bla bla",
-    date: new Date(2020, 4, 11).toISOString().slice(0, 10),
+    date: new Date(2020, 4, 11),
     isDone: false
   },
   {
     title: "Passion Project",
     description: "bla bla bla2",
-    date: new Date(2020, 4, 22).toISOString().slice(0, 10),
+    date: new Date(2020, 4, 22),
     isDone: true
   },
   {
     title: "bla bla Project",
     description: "bla bla bla3",
-    date: new Date(2020, 5, 1).toISOString().slice(0, 10),
+    date: new Date(2020, 5, 1),
     isDone: true
   }
 ];
