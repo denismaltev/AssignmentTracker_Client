@@ -2,20 +2,21 @@
   position: relative;
   width: 500px;
   margin: 0 auto;
-  margin-top: 200px;
+  margin-top: 160px;
   img {
     position: absolute;
-    max-width: 300px;
+    max-width: 330px;
     transform: translate(-80%, -20%);
   }
   .auth__form-wrapper {
     position: absolute;
-    transform: translateX(25%);
+    transform: translateX(30%);
   }
 
   h1 {
     color: $main-color;
-    font-size: 3em;
+    text-transform: uppercase;
+    font-size: 3.5em;
     margin-bottom: 50px;
   }
   input, button, p {font-family: 'raleway', sans-serif;}
