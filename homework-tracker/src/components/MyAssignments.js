@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { Button } from "react-bootstrap";
+import React, { useState, useEffect } from "react";
 import Assignment from "./Assignment";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
@@ -11,25 +10,25 @@ const fakeDataArray = [
   {
     title: "Final Assignment - SSD",
     description: "Group Project Web APP",
-    date: new Date(2020, 2, 20).toISOString().slice(0, 10),
+    date: new Date(2020, 2, 20),
     isDone: false
   },
   {
     title: "FullStack JS",
     description: " bla bla bla",
-    date: new Date(2020, 4, 11).toISOString().slice(0, 10),
+    date: new Date(2020, 4, 23),
     isDone: false
   },
   {
     title: "Passion Project",
     description: "bla bla bla2",
-    date: new Date(2020, 4, 22).toISOString().slice(0, 10),
+    date: new Date(2020, 4, 22),
     isDone: true
   },
   {
     title: "bla bla Project",
     description: "bla bla bla3",
-    date: new Date(2020, 5, 1).toISOString().slice(0, 10),
+    date: new Date(2020, 3, 1),
     isDone: true
   }
 ];
@@ -37,6 +36,22 @@ const fakeDataArray = [
 export default function MyAssignments() {
   const [active, setActive] = useState(true);
   const [completed, setCompleted] = useState(true);
+  const [assignments, setAssignments] = useState([]);
+
+  const getMyAssignmentsFromServer = async () => {
+    // Here fetch request GET
+    var result = fakeDataArray;
+
+    // sort assignments by date
+    result.sort((a, b) => {
+      return a.date.getTime() - b.date.getTime();
+    });
+    setAssignments(result);
+  };
+
+  useEffect(() => {
+    getMyAssignmentsFromServer();
+  }, []);
 
   function showAllAssignments() {
     setCompleted(true);
@@ -57,7 +72,7 @@ export default function MyAssignments() {
     <div>
       <div className="header">
         <div className="brand">
-          <img src={Logo} />
+          <img alt="Logo" src={Logo} />
           <h1>My Assignments</h1>
         </div>
         <div className="sortLinks">
@@ -79,7 +94,7 @@ export default function MyAssignments() {
             icon={faPlusCircle}
           />
         </Link>
-        {fakeDataArray.map(assignment =>
+        {assignments.map(assignment =>
           (completed && assignment.isDone) || (active && !assignment.isDone) ? (
             <Assignment key={assignment.title} assignment={assignment} />
           ) : (

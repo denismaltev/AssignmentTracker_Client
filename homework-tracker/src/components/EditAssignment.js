@@ -7,7 +7,7 @@ export default function EditAssignment(props) {
   const [errorMessage, setErrorMesage] = useState("");
   const [title, setTitle] = useState(assignment.title);
   const [description, setDescription] = useState(assignment.description);
-  const [date, setDate] = useState(assignment.date);
+  const [date, setDate] = useState(assignment.date.toISOString().slice(0, 10));
 
   const createAssignment = async event => {
     event.preventDefault();
@@ -33,7 +33,7 @@ export default function EditAssignment(props) {
     event.preventDefault();
     setTitle(assignment.title);
     setDescription(assignment.description);
-    setDate(assignment.date);
+    setDate(assignment.date.toISOString().slice(0, 10));
   };
   useEffect(() => {}, [errorMessage]);
 
@@ -42,7 +42,7 @@ export default function EditAssignment(props) {
       <div className="header">
         <div className="brand">
           <Link to="/">
-            <img src={Logo} />
+            <img alt="Logo" src={Logo} />
           </Link>
           <h1>Edit Assignment</h1>
         </div>
@@ -66,7 +66,7 @@ export default function EditAssignment(props) {
             value={description}
             name="description"
             type="text"
-            placeholder="Description"
+            placeholder="Description (optional)"
           />
           <input
             onChange={event => {
