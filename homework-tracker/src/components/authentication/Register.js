@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import app from './firebase';
+import Logo from '../../assets/Logo.png';
 
 const Register = ({ history }) => {
   const [error, setError] = useState('');
@@ -28,7 +29,7 @@ const Register = ({ history }) => {
       setError('You must fill in all fields');
       return false;
     }
-    if(password !== reenterPassword) {
+    if (password !== reenterPassword) {
       setError('Passwords must match');
       return false;
     }
@@ -36,28 +37,22 @@ const Register = ({ history }) => {
   }
 
   return (
-    <div>
-      <h1>Register</h1>
-      {error ? (
-        <p>{error}</p>
-      ) : null
-      }
-      <form onSubmit={handleRegister}>
-        <label>
-          Email
-          <input name="email" type="email" placeholder="Email" />
-        </label>
-        <label>
-          Password
-          <input name="password" type="password" placeholder="Password" />
-        </label>
-        <label>
-          Re-enter Password
-          <input name="reenterPassword" type="password" placeholder="Re-enter Password" />
-        </label>
-        <button type="submit">Register</button>
-      </form>
-      <p>Already have an account? <Link to="/login">Login</Link></p>
+    <div className="auth__container Register">
+      <img className="auth__logo" src={Logo} alt="Homework Helper Logo" />
+      <div className="auth__form-wrapper">
+        <h1>Register</h1>
+        {error ? (
+          <p>{error}</p>
+        ) : null
+        }
+        <form onSubmit={handleRegister}>
+          <input name="email" type="email" placeholder="Email" aria-label="Email" />
+          <input name="password" type="password" placeholder="Password" aria-label="Password" />
+          <input name="reenterPassword" type="password" placeholder="Re-enter Password" aria-label="Re-enter Password" />
+          <button type="submit">Register</button>
+        </form>
+        <p>Already have an account? <Link to="/login">Login</Link></p>
+      </div>
     </div>
   );
 }
