@@ -12,7 +12,6 @@
     position: absolute;
     transform: translateX(30%);
   }
-
   h1 {
     color: $main-color;
     text-transform: uppercase;
@@ -51,4 +50,56 @@
     }
   }
 
+  @media(max-width: 1040px) {
+    margin-top: 20px;
+    img {
+      position: relative;
+      transform: translate(0, 0);
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+    }
+    .auth__form-wrapper {
+      position: relative;
+      transform: translateX(0);
+    }
+  }
+  @media(max-width: 590px) {
+    margin-top: 5px;
+    width: 400px;
+    img {
+      max-width: 200px;
+    }
+    h1 {
+      font-size: 3em;
+      margin-bottom: 30px;
+    }
+  }
+
+  @media(max-width: 470px) {
+    width: 300px;
+    img {
+      max-width: 150px;
+    }
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 25px;
+    }
+    input, button {
+      border-radius: 15px;
+      font-size: 1em;
+      padding: 10px;
+    }
+    input {
+      padding-left: 30px;
+      margin-bottom: 20px;
+    }
+    button {
+      font-size: 1.1em;
+      margin-bottom: 15px;
+    }
+    p {
+      font-size: 1em;
+    }
+  }
 }
