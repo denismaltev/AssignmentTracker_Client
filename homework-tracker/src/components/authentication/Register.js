@@ -54,7 +54,7 @@ const Register = ({ history }) => {
         <form onSubmit={handleRegister}>
           <input name="email" type="email" placeholder="Email" aria-label="Email" />
           <input name="password" type="password" placeholder="Password" aria-label="Password" />
-          <input name="reenterPassword" type="password" placeholder="Re-enter Password" aria-label="Re-enter Password" />
+          <input name="reenterPassword" type="password" placeholder="Re-enter password" aria-label="Re-enter Password" />
           <button type="submit">Register</button>
         </form>
         <p>Already have an account? <Link to="/login">Login</Link></p>
