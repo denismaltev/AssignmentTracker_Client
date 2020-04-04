@@ -39,7 +39,11 @@ export default function AddAssignment() {
         <form onSubmit={createAssignment} id="add-assignment-form">
           <p style={{ color: "red", fontSize: 12 }}>{errorMessage}</p>
           <input name="title" type="text" placeholder="Title" />
-          <input name="description" type="text" placeholder="Description" />
+          <input
+            name="description"
+            type="text"
+            placeholder="Description (optional)"
+          />
           <input name="date" type="date" placeholder="Due Date" />
           <button onClick={clearForm}>Cancel</button>
           <button variant="" type="submit">

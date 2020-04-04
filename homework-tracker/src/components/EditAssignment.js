@@ -66,7 +66,7 @@ export default function EditAssignment(props) {
             value={description}
             name="description"
             type="text"
-            placeholder="Description"
+            placeholder="Description (optional)"
           />
           <input
             onChange={event => {
