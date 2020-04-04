@@ -7,11 +7,23 @@ export default function Assignment(props) {
   const [refreshComponent, setRefreshComponent] = useState(false);
   const [isShown, setIsShown] = useState(false);
   const [notify, setNotify] = useState(false);
+  const today = new Date();
 
   const deleteAssignment = async () => {
     // No logic yet
     alert("DELETE request to DB");
   };
+
+  function isAssignmentExpired() {
+    return today.getTime() - props.assignment.date.getTime() > 0 &&
+      !props.assignment.isDone
+      ? true
+      : false;
+  }
+
+  useEffect(() => {
+    setRefreshComponent(false);
+  }, [refreshComponent]);
 
   function isDoneChange() {
     if (props.assignment.isDone) {
@@ -29,10 +41,6 @@ export default function Assignment(props) {
       setNotify(true);
     }
   }
-
-  useEffect(() => {
-    setRefreshComponent(false);
-  }, [refreshComponent]);
 
   return (
     <div
@@ -92,6 +100,7 @@ export default function Assignment(props) {
           />
         )}
       </div>
+      {isAssignmentExpired() ? <p>EXP</p> : <></>}
     </div>
   );
 }
