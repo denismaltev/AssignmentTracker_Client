@@ -9,6 +9,7 @@ export default function Assignment(props) {
   const [refreshComponent, setRefreshComponent] = useState(false);
   const [isShown, setIsShown] = useState(false);
   const [notify, setNotify] = useState(false);
+  //const [isComplete, setIsComplete] = useState(false)
 
   const deleteAssignment = async () => {
     // No logic yet
@@ -31,6 +32,16 @@ export default function Assignment(props) {
       setNotify(true);
     }
   }
+
+  // function isCompleteChange() {
+  //   if (isComplete) {
+  //     props.assignment.isDone = false
+  //     isComplete = false
+  //   } else {
+  //     props.assignment.isDone = true
+  //     isComplete = true
+  //   }
+  // }
 
   useEffect(() => {
     setRefreshComponent(false);

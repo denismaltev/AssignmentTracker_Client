@@ -75,7 +75,7 @@ export default function MyAssignments() {
       <div className="wrapper">
         <Link to="/add">
           <FontAwesomeIcon
-            style={{ fontSize: 40, color: "orange" }}
+            className="addIcon fill-gradient-linear"
             icon={faPlusCircle}
           />
         </Link>
@@ -87,6 +87,13 @@ export default function MyAssignments() {
           )
         )}
       </div>
+      <svg>
+        <linearGradient id="linear">
+          <stop class="linear-stop1" offset="0%"></stop>
+          <stop class="linear-stop2" offset="50%"></stop>
+          <stop class="linear-stop3" offset="100%"></stop>
+        </linearGradient>
+    </svg>
     </div>
   );
 }
