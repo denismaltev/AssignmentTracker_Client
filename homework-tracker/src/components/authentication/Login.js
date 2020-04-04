@@ -20,7 +20,10 @@ const Login = ({ history }) => {
           .signInWithEmailAndPassword(email.value, password.value);
         history.push("/");
       } catch (error) {
-        alert(error);
+        if(error.code === "auth/user-not-found" || error.code === "auth/wrong-password") {
+          setError("Invalid email or password")
+        }
+        console.log(error.code)
       }
     },
     [history]
@@ -46,10 +49,12 @@ const Login = ({ history }) => {
       <img className="auth__logo" src={Logo} alt="Homework Helper Logo" />
       <div className="auth__form-wrapper">
         <h1>Login</h1>
-        {error ? (
-          <p>{error}</p>
-        ) : null
-        }
+        <div className="auth__error">
+          {error ? (
+            <p>{error}</p>
+          ) : null
+          }
+        </div>
         <form onSubmit={handleLogin}>
           <input name="email" type="email" placeholder="Email" aria-label="Email" />
           <input name="password" type="password" placeholder="Password" aria-label="Password" />
