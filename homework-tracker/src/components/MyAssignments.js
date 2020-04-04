@@ -104,9 +104,9 @@ export default function MyAssignments() {
       </div>
       <svg>
         <linearGradient id="linear">
-          <stop class="linear-stop1" offset="0%"></stop>
-          <stop class="linear-stop2" offset="50%"></stop>
-          <stop class="linear-stop3" offset="100%"></stop>
+          <stop className="linear-stop1" offset="0%"></stop>
+          <stop className="linear-stop2" offset="50%"></stop>
+          <stop className="linear-stop3" offset="100%"></stop>
         </linearGradient>
       </svg>
     </div>
