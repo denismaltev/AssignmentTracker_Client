@@ -1,8 +1,59 @@
-.Card form {
+.addAssignmentForm {
     display: flex;
     flex-direction: column;
+    align-items: center;
 
     input {
-        border-bottom: $grey;
+        border: none;
+        font-size: 1.125rem;
+        color: $black;
+        padding: 15px;
+        border-bottom: 1px solid $grey;
+        width: 50%;
+        margin: 0 auto;
+        text-align: center;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    .buttons {
+        margin-top: 1rem;
+
+        button {
+            width: 10rem;
+            padding: 10px 15px;
+            text-align: center;
+            border-radius: 1.5rem;
+            font-family: "Yanone Kaffeesatz", sans-serif;
+            font-size: 1.25rem;
+            color: #fff;
+            background-image: -webkit-linear-gradient(135deg,rgb(242, 113, 38), rgb(242, 82, 68), rgb(235, 0, 128));
+
+            &:focus {
+                outline: none;
+            }
+        }
+    }
+
+    .cancel {
+        margin-right: .5rem;
+        
+        &:hover {
+                background-image: -webkit-linear-gradient(135deg,rgba(242, 113, 38, .8), rgba(242, 82, 68, .8), rgba(235, 0, 128, .8));
+            }
+        }
+
+        .submit:hover {
+                
+            background-image: -webkit-linear-gradient(135deg,rgba(242, 113, 38, .8), rgba(242, 82, 68, .8), rgba(235, 0, 128, .8));
+        }
+        
+}
+
+@media screen and (max-width: 800px) {
+    button {
+        width: 7rem;
     }
 }
