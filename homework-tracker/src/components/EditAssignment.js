@@ -34,6 +34,7 @@ export default function EditAssignment(props) {
     setTitle(assignment.title);
     setDescription(assignment.description);
     setDate(assignment.date.toISOString().slice(0, 10));
+    setErrorMesage("");
   };
   useEffect(() => {}, [errorMessage]);
 

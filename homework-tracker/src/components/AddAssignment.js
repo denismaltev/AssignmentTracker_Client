@@ -23,6 +23,7 @@ export default function AddAssignment() {
   const clearForm = event => {
     event.preventDefault();
     document.getElementById("add-assignment-form").reset();
+    setErrorMesage("");
   };
   useEffect(() => {}, [errorMessage]);
   return (
@@ -36,9 +37,11 @@ export default function AddAssignment() {
         </div>
       </div>
       <div className="Card">
-        <form 
-        onSubmit={createAssignment} id="add-assignment-form"
-        className="addAssignmentForm">
+        <form
+          onSubmit={createAssignment}
+          id="add-assignment-form"
+          className="addAssignmentForm"
+        >
           <p style={{ color: "red", fontSize: 12 }}>{errorMessage}</p>
           <input name="title" type="text" placeholder="Title" />
           <input
@@ -48,10 +51,12 @@ export default function AddAssignment() {
           />
           <input name="date" type="date" placeholder="Due Date" />
           <div className="buttons">
-          <button className="cancel"onClick={clearForm}>Cancel</button>
-          <button className="submit" variant="" type="submit">
-            Add
-          </button>
+            <button className="cancel" onClick={clearForm}>
+              Cancel
+            </button>
+            <button className="submit" variant="" type="submit">
+              Add
+            </button>
           </div>
         </form>
       </div>
