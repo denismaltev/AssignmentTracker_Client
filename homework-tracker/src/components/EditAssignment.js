@@ -48,7 +48,8 @@ export default function EditAssignment(props) {
         </div>
       </div>
       <div className="Card">
-        <form onSubmit={createAssignment} id="add-assignment-form">
+        <form onSubmit={createAssignment} id="add-assignment-form"
+        className="addAssignmentForm">
           <p style={{ color: "red", fontSize: 12 }}>{errorMessage}</p>
           <input
             onChange={event => {
@@ -77,10 +78,12 @@ export default function EditAssignment(props) {
             type="date"
             placeholder="Due Date"
           />
-          <button onClick={clearForm}>Cancel</button>
-          <button variant="" type="submit">
-            Edit
+           <div className="buttons">
+          <button className="cancel" onClick={clearForm}>Cancel</button>
+          <button className="submit" variant="" type="submit">
+            Save Changes
           </button>
+          </div>
         </form>
       </div>
     </div>
