@@ -1,4 +1,12 @@
 $main-color: #A6038B;
 $secondary-color: rgb(227, 119, 62);
 $tertiary-color: #EB0080;
+$accent-color: #F25244;
 $grey: #adadad;
+$black: #0D0D0D;
+
+$gradient: -webkit-linear-gradient(135deg,rgb(242, 113, 38), rgb(242, 82, 68), rgb(235, 0, 128));
+$gradient-hover: -webkit-linear-gradient(135deg,rgba(242, 113, 38, .8), rgba(242, 82, 68, .8), rgba(235, 0, 128, .8));
+
+$heading-font: "Yanone Kaffeesatz", sans-serif;
+$body-font: 'Raleway', sans-serif;

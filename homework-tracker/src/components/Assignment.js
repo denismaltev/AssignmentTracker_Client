@@ -49,13 +49,13 @@ export default function Assignment(props) {
 
   function assignmentStatus() {
     if (props.assignment.isDone) {
-      return <div style={{ color: "green" }}>DONE</div>;
+      return <div className="complete">DONE</div>;
     } else if (isAssignmentExpired() && daysLeft() < 0) {
-      return <div style={{ color: "red" }}>LATE!</div>;
+      return <div className="late">LATE!</div>;
     } else if (daysLeft() === 0) {
-      return <div style={{ color: "green" }}>TODAY!</div>;
+      return <div className="incomplete">TODAY!</div>;
     } else {
-      return <div style={{ color: "green" }}>{daysLeft()} days left</div>;
+      return <div className="incomplete">{daysLeft()} days left</div>;
     }
   }
 
