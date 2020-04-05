@@ -16,7 +16,7 @@ const fakeDataArray = [
   {
     title: "FullStack JS",
     description: " bla bla bla",
-    date: new Date(2020, 3, 4),
+    date: new Date(2020, 3, 5),
     isDone: false
   },
   {

@@ -26,10 +26,10 @@
             padding: 10px 15px;
             text-align: center;
             border-radius: 1.5rem;
-            font-family: "Yanone Kaffeesatz", sans-serif;
-            font-size: 1.25rem;
+            font-family: $heading-font;
+            font-size: 1.5rem;
             color: #fff;
-            background-image: -webkit-linear-gradient(135deg,rgb(242, 113, 38), rgb(242, 82, 68), rgb(235, 0, 128));
+            background-image: $gradient;
 
             &:focus {
                 outline: none;
@@ -41,19 +41,23 @@
         margin-right: .5rem;
         
         &:hover {
-                background-image: -webkit-linear-gradient(135deg,rgba(242, 113, 38, .8), rgba(242, 82, 68, .8), rgba(235, 0, 128, .8));
+                background-image: $gradient-hover
             }
         }
 
         .submit:hover {
                 
-            background-image: -webkit-linear-gradient(135deg,rgba(242, 113, 38, .8), rgba(242, 82, 68, .8), rgba(235, 0, 128, .8));
+            background-image: $gradient-hover
         }
         
 }
 
 @media screen and (max-width: 800px) {
+    .addAssignmentForm {
+        .buttons {
     button {
         width: 7rem;
     }
+}
+}
 }

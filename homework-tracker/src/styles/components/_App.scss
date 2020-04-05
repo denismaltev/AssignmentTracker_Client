@@ -2,14 +2,14 @@
 
 body {
   margin: 0;
-  font-family: "raleway", sans-serif;
-  color: #0D0D0D;
+  font-family: $body-font;
+  color: $black;
   padding: 3rem;
   height: 100%;
 }
 
 h1, h2, h3, h4 {
-  font-family: "Yanone Kaffeesatz", sans-serif;
+  font-family: $heading-font;
   font-weight: 400;
 }
 
@@ -38,7 +38,7 @@ h1, h2, h3, h4 {
 }
 
 .header h1 {
-  color: #A6038B;
+  color: $main-color;
   font-weight: 500;
   align-self: flex-end;
   padding-top: 1rem;
@@ -53,7 +53,7 @@ h1, h2, h3, h4 {
 
 .headerLink {
   border: none;
-  color: #adadad;
+  color: $grey;
   font-size: 1.25rem;
   margin-right: 1rem;
   text-align: center;
@@ -62,7 +62,7 @@ h1, h2, h3, h4 {
 
 .headerLink:hover {
   text-decoration: none;
-  border-bottom: 1px solid #f25244
+  border-bottom: 1px solid $accent-color;
 }
 
 /* .headerLink:active,
@@ -85,15 +85,15 @@ h1, h2, h3, h4 {
 
 /* setting colors for linear gradient */
 .linear-stop1 {
-  stop-color:#F27329
+  stop-color:$secondary-color;
 }
 
 .linear-stop2 {
-  stop-color:#f25244;
+  stop-color: $accent-color;
 }
 
 .linear-stop3 {
-  stop-color: #EB0080;
+  stop-color: $tertiary-color;
 }
 
 .addIcon:hover {
@@ -178,7 +178,7 @@ svg {
 }
 
 .Card h4 {
-  color: #A6038B;
+  color: $main-color;
   font-size:2.3rem;
   margin: 1rem 0 0 4rem;
 }
@@ -197,16 +197,16 @@ svg {
 
 .checkbox {
   font-size: 2rem;
-  color: #f25244
+  color: $secondary-color;
 }
 
 .checkboxDone {
-  color: #EB0080;
+  color: $tertiary-color;
   font-size: 2rem;
 }
 
 .CardDescription {
-  color: #0D0D0D;
+  color: $black;
   margin: -1rem 0 0 5rem;
   font-size: 1.125rem;
 }
@@ -226,7 +226,7 @@ svg {
 
 .DueDateTitle {
   text-transform: uppercase;
-  color: #EB0080;
+  color: $tertiary-color;
   padding-right: .5rem;
 }
 
@@ -235,15 +235,23 @@ svg {
 }
 
 .notifyOff {
-  color: #adadad
+  color: $grey;
 }
 
 .notifyOn {
-  color: #F27329
+  color: $secondary-color;
 }
 
 .late {
-  color: #f25244;
+  color: $accent-color;
+}
+
+.complete {
+  color: $grey;
+}
+
+.incomplete {
+  color: $main-color
 }
 
 @media screen and (max-width: 500px) {
