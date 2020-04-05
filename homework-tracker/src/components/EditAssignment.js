@@ -18,7 +18,7 @@ export default function EditAssignment(props) {
     } else if (
       title.value === assignment.title &&
       description.value === assignment.description &&
-      date.value === assignment.date
+      date.value === assignment.date.toISOString().slice(0, 10)
     ) {
       setErrorMesage("No changes detected");
     } else {
