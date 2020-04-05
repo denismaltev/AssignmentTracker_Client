@@ -9,13 +9,70 @@
         color: $black;
         padding: 15px;
         border-bottom: 1px solid $grey;
-        width: 50%;
+        //width: 50%;
         margin: 0 auto;
         text-align: center;
 
         &:focus {
             outline: none;
         }
+
+        &::placeholder {
+            color: $grey;
+            font-family: $body-font;
+        }
+    }
+
+    [type=date] {
+        color: $black;
+        font-family: $body-font;
+
+        position: relative;
+
+        ::-webkit-input-placeholder { color: $grey }
+        ::-moz-placeholder { color: $grey } /* firefox 19+ */
+        :-ms-input-placeholder { color: $grey } /* ie */
+        input:-moz-placeholder { color: $grey }
+
+        // &::after {
+        //     font-family: "Font Awesome 5 Free";
+        //     font-weight: 900;
+        //     content: "\f133";
+        //     color: $main-color;
+        //     padding: 0 5px
+        // }
+
+        // &:hover:after {
+        //     color: $grey;
+        // }
+
+        ::-webkit-calendar-picker-indicator {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            width: auto;
+            height: auto;
+            color: transparent;
+            background: transparent;
+        }
+
+        ::-webkit-inner-spin-button {
+            z-index: 1;;
+        }
+
+        ::-webkit-clear-button {
+            z-index: 1;
+        }
+    }
+
+    .calendar {
+        font-size: 1.7rem;
+        position: absolute;
+        padding-top: 1rem;
+        margin-left: -1rem;
+        color: $main-color;
     }
 
     .buttons {
