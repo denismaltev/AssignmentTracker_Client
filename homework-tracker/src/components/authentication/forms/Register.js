@@ -60,7 +60,7 @@ const Register = ({ history }) => {
           <input name="reenterPassword" type="password" placeholder="Re-enter password" aria-label="Re-enter Password" />
           <button type="submit">Register</button>
         </form>
-        <p>Already have an account? <Link to="/login">Login</Link></p>
+        <p className="auth__link">Already have an account? <Link to="/login">Login</Link></p>
       </div>
     </div>
   );

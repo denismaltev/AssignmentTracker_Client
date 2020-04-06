@@ -1,0 +1,15 @@
+.NavBar__container {
+  display: flex;
+  justify-content: flex-end;
+  .NavBar__item {
+    font-family: "raleway", sans-serif;
+    color: $grey;
+    border: none;
+    font-size: 1.25rem;
+    &:hover, &:focus, &:active {
+      color: $tertiary-color;
+      transition: color, .3s;
+    }
+  }
+
+}
