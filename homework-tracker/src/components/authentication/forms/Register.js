@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import { withRouter, Link } from 'react-router-dom';
-import app from './firebase';
-import Logo from '../../assets/Logo.png';
+import app from '../firebase';
+import Logo from '../../../assets/Logo.png';
 
 const Register = ({ history }) => {
   const [error, setError] = useState('');

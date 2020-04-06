@@ -1,6 +1,6 @@
 import React from 'react';
-import Message from './Message';
-import app from 'firebase';
+import Message from '../Message';
+import app from '../firebase';
 
 const SendVerification = () => {
   const title = "Thanks for registering!"

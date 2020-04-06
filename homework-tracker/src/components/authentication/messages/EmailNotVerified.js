@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import Message from './Message';
+import Message from '../Message';
 
 const EmailNotVerified = ({ history, location }) => {
 
