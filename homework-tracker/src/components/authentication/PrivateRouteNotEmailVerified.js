@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import {Route, Redirect} from 'react-router-dom';
 import {AuthContext} from "./Auth";
 
-const PrivateRoute = ({component: RouteComponent, ...rest}) => {
+const PrivateRouteNotEmailVerified = ({component: RouteComponent, ...rest}) => {
   const {currentUser} = useContext(AuthContext);
 
   return ( 
@@ -10,12 +10,8 @@ const PrivateRoute = ({component: RouteComponent, ...rest}) => {
       {...rest}
       render={routeProps => 
         !!currentUser ? (
-          !!currentUser.emailVerified ? (
             <RouteComponent {...routeProps} />
-          ) : (
-            <Redirect to={"/notVerified"} />
-          )
-        ) : (
+          ): (
           <Redirect to={"/login"} />
         )
       }
@@ -23,4 +19,4 @@ const PrivateRoute = ({component: RouteComponent, ...rest}) => {
    );
 }
  
-export default PrivateRoute;
+export default PrivateRouteNotEmailVerified;

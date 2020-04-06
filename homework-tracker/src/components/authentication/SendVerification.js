@@ -2,7 +2,7 @@ import React from 'react';
 import Message from './Message';
 import app from 'firebase';
 
-const FinishRegister = () => {
+const SendVerification = () => {
   const title = "Thanks for registering!"
   const message = "A verification link has been sent to the email address you used to register. Please verify your email before continuing."
 
@@ -19,4 +19,4 @@ const FinishRegister = () => {
   );
 }
 
-export default FinishRegister;
+export default SendVerification;
