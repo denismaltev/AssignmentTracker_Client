@@ -36,6 +36,13 @@ export default function Assignment(props) {
     }
   }
 
+  function isNotifyDueDate() {
+    if (notify) {
+      var currentDay = props.assignment.date.getTIme() - today.getTime();
+      alert("{currentDay} days left until {props.assignment.title} is due!")
+    }
+  }
+
   function isAssignmentExpired() {
     return today.getTime() - props.assignment.date.getTime() > 0 &&
       !props.assignment.isDone
