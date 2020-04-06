@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Logo from "../assets/Logo.png";
 import { Link } from "react-router-dom";
+import { faCalendar } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function EditAssignment(props) {
   const assignment = props.location.state.assignment;
@@ -48,7 +50,8 @@ export default function EditAssignment(props) {
         </div>
       </div>
       <div className="Card">
-        <form onSubmit={createAssignment} id="add-assignment-form">
+        <form onSubmit={createAssignment} id="add-assignment-form"
+        className="addAssignmentForm">
           <p style={{ color: "red", fontSize: 12 }}>{errorMessage}</p>
           <input
             onChange={event => {
@@ -68,6 +71,7 @@ export default function EditAssignment(props) {
             type="text"
             placeholder="Description (optional)"
           />
+          <div className="dueDate">
           <input
             onChange={event => {
               setDate(event.target.value);
@@ -77,10 +81,14 @@ export default function EditAssignment(props) {
             type="date"
             placeholder="Due Date"
           />
-          <button onClick={clearForm}>Cancel</button>
-          <button variant="" type="submit">
-            Edit
+          <FontAwesomeIcon className="calendar" icon={faCalendar} />
+          </div>
+           <div className="buttons">
+          <button className="cancel" onClick={clearForm}>Cancel</button>
+          <button className="submit" variant="" type="submit">
+            Save Changes
           </button>
+          </div>
         </form>
       </div>
     </div>
