@@ -1,5 +1,5 @@
 import React, {useState, useCallback} from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import app from '../firebase';
 import Logo from '../../../assets/Logo.png';
 
@@ -43,6 +43,7 @@ const ResetPassword = ({ history, location }) => {
       <img className="auth__logo" src={Logo} alt="Homework Helper Logo" />
       <div className="auth__form-wrapper">
         <h1>Reset Password</h1>
+        <p className="auth__message">Please enter your new password</p>
         <div className="auth__error">
           {error ? (
             <p>{error}</p>

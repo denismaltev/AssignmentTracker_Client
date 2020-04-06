@@ -19,6 +19,14 @@
     margin-bottom: 10px;
   }
   input, button, p {font-family: 'raleway', sans-serif;}
+  .auth__message {
+    text-align: left;
+    font-size: 1.1em;
+    margin-bottom: 0;
+  }
+  .auth__error {
+    text-align: center;
+  }
   input, button {
     box-sizing: border-box;
     width: 100%;
@@ -39,7 +47,7 @@
     background-color: transparent;
     background-image: linear-gradient($secondary-color, rgb(225,94,75));
   }
-  p {
+  .auth__link {
     font-size: 1.2em;
     text-align: center;
     margin: 0;
@@ -50,7 +58,6 @@
       color: $tertiary-color;
     }
   }
-
   .auth__error {
     color: $tertiary-color;
     height: 32px;

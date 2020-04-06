@@ -60,8 +60,8 @@ const Login = ({ history }) => {
           <input name="password" type="password" placeholder="Password" aria-label="Password" />
           <button type="submit">Login</button>
         </form>
-        <p>Not a member? <Link to="/register">Register</Link></p>
-        <p><Link to="/forgotPassword">Forgot Password?</Link></p>
+        <p className="auth__link">Not a member? <Link to="/register">Register</Link></p>
+        <p className="auth__link"><Link to="/forgotPassword">Forgot Password?</Link></p>
       </div>
     </div>
   );

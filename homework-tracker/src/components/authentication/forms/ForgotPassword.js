@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import app from '../firebase';
-import Message from '../Message';
+import Logo from '../../../assets/Logo.png';
 
 const ForgotPassword = ({ history }) => {
   const [error, setError] = useState('');
@@ -36,18 +36,23 @@ const ForgotPassword = ({ history }) => {
   }
 
   return (
-    <div>
-      <Message title={title} message={message} />
-      <div>
-        {error ? (
-          <p>{error}</p>
-        ) : null
-        }
+    <div className="auth__container ForgotPassword">
+      <img className="auth__logo" src={Logo} alt="Homework Helper Logo" />
+      <div className="auth__form-wrapper">
+        <h1>{title}</h1>
+        <p className="auth__message">{message}</p>
+        <div className="auth__error">
+          {error ? (
+            <p>{error}</p>
+          ) : null
+          }
+        </div>
+        <form onSubmit={sendPasswordResetLink}>
+          <input name="email" type="email" placeholder="Email" aria-label="Email" />
+          <button type="submit">Submit</button>
+        </form>
+        <p className="auth__link"><Link to="/login">Go back to login</Link></p>
       </div>
-      <form onSubmit={sendPasswordResetLink}>
-        <input name="email" type="email" placeholder="Email" aria-label="Email" />
-        <button type="submit">Submit</button>
-      </form>
     </div>
   );
 }
