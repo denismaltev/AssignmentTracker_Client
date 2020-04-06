@@ -19,7 +19,7 @@ const ForgotPassword = ({ history }) => {
         await app
           .auth()
           .sendPasswordResetEmail(email.value);
-        history.push("/");
+        history.push("/passwordResetLinkSent");
       } catch (error) {
         console.log(error.code)
       }
