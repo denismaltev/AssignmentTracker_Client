@@ -10,11 +10,6 @@ export default function Assignment(props) {
   const [notify, setNotify] = useState(false);
   const today = new Date();
 
-  const deleteAssignment = async () => {
-    // No logic yet
-    alert("DELETE request to DB");
-  };
-
   useEffect(() => {
     setRefreshComponent(false);
   }, [refreshComponent]);
@@ -103,16 +98,19 @@ export default function Assignment(props) {
             <Link
               to={{
                 pathname: "/edit",
-                state: { assignment: props.assignment }
+                state: { assignment: props.assignment },
               }}
             >
               <FontAwesomeIcon icon={faPen} className="edit" />
             </Link>
-            <FontAwesomeIcon
-              className="delete"
-              icon={faTimes}
-              onClick={deleteAssignment}
-            />
+            <Link
+              to={{
+                pathname: "/delete",
+                state: { assignment: props.assignment },
+              }}
+            >
+              <FontAwesomeIcon className="delete" icon={faTimes} />
+            </Link>
           </div>
         )}
       </div>
