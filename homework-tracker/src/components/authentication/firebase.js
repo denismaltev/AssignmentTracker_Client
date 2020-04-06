@@ -11,4 +11,9 @@ const app = firebase.initializeApp({
   appId: process.env.REACT_APP_FIREBASE_APP_ID
 });
 
+export const emailActionCodeSettings = {
+  url: 'http://localhost:3000/',
+  handleCodeInApp: true
+}
+
 export default app;

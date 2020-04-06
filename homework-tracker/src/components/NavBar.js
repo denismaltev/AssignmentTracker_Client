@@ -7,7 +7,7 @@ const NavBar = () => {
 
   return ( 
     <div>
-      {currentUser ? (
+      {(currentUser) ? (
         <button onClick={() => app.auth().signOut()}>Logout</button>
       ) : null
       }

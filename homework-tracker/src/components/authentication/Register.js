@@ -16,10 +16,10 @@ const Register = ({ history }) => {
       try {
         await app
           .auth()
-          .createUserWithEmailAndPassword(email.value, password.value);
-        history.push('/');
+          .createUserWithEmailAndPassword(email.value, password.value)
+        history.push('/finishRegister');
       } catch (error) {
-        console.log(error.code, error.message);
+        console.log(error);
       }
     }
   }, [history]);
