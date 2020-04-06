@@ -1,13 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { withRouter, Redirect } from 'react-router-dom';
 import Message from './Message';
 
 const RedirectEmailLink = ({ history, location }) => {
-  const [redirectReady, setRedirectReady] = useState(false);
   const query = new URLSearchParams(location.search);
   const oobCode = query.get('oobCode')
   const mode = query.get('mode');
-
   let redirect = null;
 
   if (mode === 'verifyEmail') {
@@ -19,7 +17,6 @@ const RedirectEmailLink = ({ history, location }) => {
         }}
       />
     );
-    setRedirectReady(true);
   }
   if (mode === 'resetPassword') {
     redirect = (
@@ -30,13 +27,12 @@ const RedirectEmailLink = ({ history, location }) => {
         }}
       />
     );
-    setRedirectReady(true);
   }
 
   return (
     <div>
       {
-        redirectReady ? (
+        redirect !== null ? (
           redirect
         ) : (
             <Message
