@@ -16,6 +16,7 @@ import EmailNotVerified from "./components/authentication/messages/EmailNotVerif
 import ForgotPassword from "./components/authentication/forms/ForgotPassword";
 import ResetPassword from "./components/authentication/forms/ResetPassword";
 import RedirectEmailLink from "./components/authentication/RedirectEmailLink";
+import PasswordResetLinkSent from "./components/authentication/messages/PasswordResetLinkSent";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
             <Route exact path="/forgotPassword" component={ForgotPassword} />
             <Route exact path="/resetPassword" component={ResetPassword} />
             <Route path="/redirectEmail" component={RedirectEmailLink} />
+            <Route exact path="/passwordResetLinkSent" component={PasswordResetLinkSent} />
           </Switch>
         </div>
       </Router>
