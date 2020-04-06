@@ -61,6 +61,7 @@ const Login = ({ history }) => {
           <button type="submit">Login</button>
         </form>
         <p>Not a member? <Link to="/register">Register</Link></p>
+        <p><Link to="/forgotPassword">Forgot Password?</Link></p>
       </div>
     </div>
   );

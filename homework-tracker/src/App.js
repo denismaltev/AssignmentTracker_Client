@@ -12,6 +12,9 @@ import PrivateRouteNotVerified from "./components/authentication/PrivateRouteNot
 import { AuthProvider } from "./components/authentication/Auth";
 import VerifyEmail from "./components/authentication/VerifyEmail";
 import EmailNotVerified from "./components/authentication/EmailNotVerified";
+import ForgotPassword from "./components/authentication/ForgotPassword";
+import ResetPassword from "./components/authentication/ResetPassword";
+import RedirectEmailLink from "./components/authentication/RedirectEmailLink";
 
 function App() {
   return (
@@ -28,6 +31,9 @@ function App() {
             <PrivateRouteNotVerified exact path="/notVerified" component={EmailNotVerified} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/register" component={Register} />
+            <Route exact path="/forgotPassword" component={ForgotPassword} />
+            <Route exact path="/resetPassword" component={ResetPassword} />
+            <Route exact path="/redirectEmail" component={RedirectEmailLink} />
           </Switch>
         </div>
       </Router>
