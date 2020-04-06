@@ -12,6 +12,7 @@ code {
     monospace;
 }
 
+
 // Helpers
 @import 'variables';
 @import 'mixins';
@@ -20,4 +21,4 @@ code {
 @import './components/App';
 @import './components/Authentication';
 @import './components/AddAssignment';
-@import './components/EditAssignment';
+@import './components/Message';

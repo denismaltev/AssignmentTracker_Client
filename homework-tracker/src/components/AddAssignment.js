@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Logo from "../assets/Logo.png";
 import { Link } from "react-router-dom";
+import { faCalendar } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function AddAssignment() {
   const [errorMessage, setErrorMesage] = useState("");
@@ -26,6 +28,9 @@ export default function AddAssignment() {
     setErrorMesage("");
   };
   useEffect(() => {}, [errorMessage]);
+
+  const today = new Date().toISOString().substr(0, 10);
+
   return (
     <div>
       <div className="header">
@@ -49,7 +54,10 @@ export default function AddAssignment() {
             type="text"
             placeholder="Description (optional)"
           />
+          <div className="dueDate">
           <input name="date" type="date" placeholder="Due Date" />
+          <FontAwesomeIcon className="calendar" icon={faCalendar} />
+          </div>
           <div className="buttons">
             <button className="cancel" onClick={clearForm}>
               Cancel
