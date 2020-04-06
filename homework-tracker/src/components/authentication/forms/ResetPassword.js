@@ -1,7 +1,7 @@
 import React, {useState, useCallback} from 'react';
 import { withRouter } from 'react-router-dom';
-import app from './firebase';
-import Logo from '../../assets/Logo.png';
+import app from '../firebase';
+import Logo from '../../../assets/Logo.png';
 
 const ResetPassword = ({ history, location }) => {
   const [error, setError] = useState('');

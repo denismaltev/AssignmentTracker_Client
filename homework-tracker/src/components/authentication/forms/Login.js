@@ -1,8 +1,8 @@
 import React, { useCallback, useContext, useState } from "react";
 import { withRouter, Redirect, Link } from "react-router-dom";
-import app from "./firebase";
-import { AuthContext } from "./Auth.js";
-import Logo from '../../assets/Logo.png';
+import app from "../firebase";
+import { AuthContext } from "../Auth.js";
+import Logo from '../../../assets/Logo.png';
 
 const Login = ({ history }) => {
   const [error, setError] = useState('');

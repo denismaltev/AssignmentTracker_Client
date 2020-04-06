@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import { withRouter, Link } from 'react-router-dom';
-import app from './firebase';
-import Logo from '../../assets/Logo.png';
+import app from '../firebase';
+import Logo from '../../../assets/Logo.png';
 
 const Register = ({ history }) => {
   const [error, setError] = useState('');
@@ -19,6 +19,9 @@ const Register = ({ history }) => {
           .createUserWithEmailAndPassword(email.value, password.value)
         history.push('/sendVerification');
       } catch (error) {
+        if (error.code === 'auth/email-already-in-use') {
+          setError('The email address is already in use');
+        }
         console.log(error);
       }
     }

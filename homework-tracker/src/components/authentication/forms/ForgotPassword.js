@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { withRouter } from 'react-router-dom';
-import app from './firebase';
-import Message from './Message';
+import app from '../firebase';
+import Message from '../Message';
 
 const ForgotPassword = ({ history }) => {
   const [error, setError] = useState('');
