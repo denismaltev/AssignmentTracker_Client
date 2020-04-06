@@ -4,11 +4,8 @@ import app from './firebase';
 import Message from './Message';
 
 const VerifyEmail = ({ history, location }) => {
-  const query = new URLSearchParams(location.search);
-  const oobCode = query.get('oobCode')
-
   try {
-    app.auth().applyActionCode(oobCode).then(() => {
+    app.auth().applyActionCode(location.state.oobCode).then(() => {
       history.push('/')
     });
   } catch (error) {
