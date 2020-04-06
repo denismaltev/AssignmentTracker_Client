@@ -8,9 +8,9 @@ export default function DeleteAssignment(props) {
   const assignment = props.location.state.assignment;
 
   const deleteAssignment = async (event) => {
+    // DELETE request HERE
     alert("DELETE request");
-    //<Redirect to="/" />;
-    //<Redirect to="/edit" />;
+    window.location.href = "/";
   };
 
   return (
@@ -24,11 +24,10 @@ export default function DeleteAssignment(props) {
         </div>
       </div>
       <div className="Card">
-        <form
-          onSubmit={deleteAssignment}
-          id="add-assignment-form"
-          className="addAssignmentForm"
-        >
+        <div id="add-assignment-form" className="addAssignmentForm">
+          <div className="brand">
+            <h2>Are you sure you want to delete the following assignment ?</h2>
+          </div>
           <input placeholder={assignment.title} />
           <input placeholder={assignment.description} />
           <div className="dueDate">
@@ -39,11 +38,11 @@ export default function DeleteAssignment(props) {
             <Link to="/">
               <button className="cancel">Cancel</button>
             </Link>
-            <button className="submit" variant="" type="submit">
+            <button className="submit" onClick={deleteAssignment}>
               Delete
             </button>
           </div>
-        </form>
+        </div>
       </div>
     </div>
   );
