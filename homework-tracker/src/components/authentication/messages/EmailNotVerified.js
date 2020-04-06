@@ -12,8 +12,9 @@ const EmailNotVerified = ({ history, location }) => {
     <div>
       <Message
       title="Can't Access Page"
-      message="Please verify your account through the verification link sent to your email. Or, click the link below to re-send the verification link." />
-      <button onClick={resendCode}>Resend Verification Email</button>
+      message="Please verify your account through the verification link sent to your email. Or, click the link below to re-send the verification link."
+      buttonText="Re-send Verification Email"
+      buttonOnClick={resendCode} />
     </div>
   );
 }

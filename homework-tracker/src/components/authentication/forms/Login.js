@@ -40,7 +40,6 @@ const Login = ({ history }) => {
   const { currentUser } = useContext(AuthContext);
 
   if (currentUser) {
-    console.log(app.auth().currentUser.getIdToken())
     return <Redirect to="/" />;
   }
 

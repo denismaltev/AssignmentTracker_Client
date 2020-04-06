@@ -37,8 +37,9 @@ const VerifyEmail = ({ history, location }) => {
             <div>
               <Message
                 title="Your email has been successfully verified"
-                message="You will be redirected to the login page automatically, or click the button below" />
-              <button onClick={redirectToLogin}>Go to Login Page</button>
+                message="You will be redirected to the login page automatically, or click the button below"
+                buttonText="Go to Login Page"
+                buttonOnClick={redirectToLogin} />
             </div>
           )
       }
