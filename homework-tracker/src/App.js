@@ -7,6 +7,7 @@ import Login from "./components/authentication/forms/Login";
 import NavBar from "./components/NavBar";
 import Register from "./components/authentication/forms/Register";
 import SendVerification from './components/authentication/messages/SendVerification';
+import DeleteAssignment from "./components/DeleteAssignment";
 import PrivateRoute from "./components/authentication/PrivateRoute";
 import PrivateRouteNotVerified from "./components/authentication/PrivateRouteNotEmailVerified";
 import { AuthProvider } from "./components/authentication/Auth";
@@ -26,9 +27,10 @@ function App() {
             <PrivateRoute exact path="/" component={MyAssignments} />
             <PrivateRoute exact path="/add" component={AddAssignment} />
             <PrivateRoute exact path="/edit" component={EditAssignment} />
+            <PrivateRoute exact path="/delete" component={DeleteAssignment} />
             <PrivateRouteNotVerified exact path="/sendVerification" component={SendVerification} />
-            <Route exact path="/verifyEmail" component={VerifyEmail} />
             <PrivateRouteNotVerified exact path="/notVerified" component={EmailNotVerified} />
+            <Route exact path="/verifyEmail" component={VerifyEmail} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/forgotPassword" component={ForgotPassword} />
