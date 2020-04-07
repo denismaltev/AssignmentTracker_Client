@@ -38,16 +38,35 @@ export default function MyAssignments() {
   const [completed, setCompleted] = useState(true);
   const [assignments, setAssignments] = useState([]);
 
+  const URL = "https://nameless-headland-04100.herokuapp.com/api/assignments";
+
   const getMyAssignmentsFromServer = async () => {
     // Here fetch request GET
     var result = fakeDataArray;
 
-    // sort assignments by date
-    result.sort((a, b) => {
+    fetch(URL, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "accplication/json",
+      },
+    })
+    .then((response) => {
+      return response.json();
+      console.log(response)
+    })
+    .then((json) => {
+          // sort assignments by date
+      json.sort((a, b) => {
       return a.date.getTime() - b.date.getTime();
     });
-    setAssignments(result);
-  };
+    setAssignments(json);
+    })
+
+    .catch(function (error) {
+      //alert(error)
+    })
+  }
 
   useEffect(() => {
     getMyAssignmentsFromServer();
