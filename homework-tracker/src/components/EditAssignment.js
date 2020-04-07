@@ -87,7 +87,7 @@ export default function EditAssignment(props) {
            <div className="buttons">
           <button className="cancel" onClick={clearForm}>Cancel</button>
           <button className="submit" variant="" type="submit">
-            Save Changes
+            Save
           </button>
           </div>
         </form>
