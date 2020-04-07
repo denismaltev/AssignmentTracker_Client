@@ -45,17 +45,19 @@ export default function MyAssignments() {
     var result = fakeDataArray;
 
     fetch(URL, {
-      method: "GET",
       headers: {
+        "Access-Control-Allow-Origin": "*",
+        'Access-Control-Allow-Credentials': 'true',
+        "Access-Control-Allow-Methods": "*",
         "Content-Type": "application/json",
-        Accept: "accplication/json",
+        Accept: "application/json"
       },
     })
     .then((response) => {
       return response.json();
-      console.log(response)
     })
     .then((json) => {
+      console.log(json)
           // sort assignments by date
       json.sort((a, b) => {
       return a.date.getTime() - b.date.getTime();
