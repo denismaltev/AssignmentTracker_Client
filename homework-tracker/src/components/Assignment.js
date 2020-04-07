@@ -33,7 +33,7 @@ export default function Assignment(props) {
 
   function isNotifyDueDate() {
     if (notify) {
-      var currentDay = props.assignment.date.getTIme() - today.getTime();
+      var currentDay = props.assignment.date.getTme() - today.getTime();
 
       if(currentDay < 3) {
       alert(`${currentDay} days left until ${props.assignment.title} is due!`)
