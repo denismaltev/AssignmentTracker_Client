@@ -33,7 +33,7 @@ export default function Assignment(props) {
 
   function isNotifyDueDate() {
     if (notify) {
-      var currentDay = props.assignment.date.getTme() - today.getTime();
+      var currentDay = props.assignment.dueDate.getTme() - today.getTime();
 
       if(currentDay < 3) {
       alert(`${currentDay} days left until ${props.assignment.title} is due!`)
@@ -42,14 +42,14 @@ export default function Assignment(props) {
   }
 
   function isAssignmentExpired() {
-    return today.getTime() - props.assignment.date.getTime() > 0 &&
+    return today.getTime() - props.assignment.DueDate.getTime() > 0 &&
       !props.assignment.isDone
       ? true
       : false;
   }
 
   function daysLeft() {
-    return Math.ceil((props.assignment.date - today) / 1000 / 60 / 60 / 24);
+    return Math.ceil((props.assignment.DueDate - today) / 1000 / 60 / 60 / 24);
   }
 
   function assignmentStatus() {
@@ -75,7 +75,7 @@ export default function Assignment(props) {
           <div>
             <strike>
               <h4>
-                <div onClick={isDoneChange}>{props.assignment.title}</div>
+                <div onClick={isDoneChange}>{props.assignment.Name}</div>
               </h4>
             </strike>
             <FontAwesomeIcon
@@ -87,7 +87,7 @@ export default function Assignment(props) {
         ) : (
           <div>
             <h4>
-              <div onClick={isDoneChange}>{props.assignment.title}</div>
+              <div onClick={isDoneChange}>{props.assignment.Name}</div>
             </h4>
             <FontAwesomeIcon
               icon={faCircle}
@@ -117,11 +117,11 @@ export default function Assignment(props) {
           </div>
         )}
       </div>
-      <p className="CardDescription">{props.assignment.description}</p>
+      <p className="CardDescription">{props.assignment.Description}</p>
       <div className="DueDate">
         <p className="CardDate">
           <span className="DueDateTitle">Due Date: </span>
-          {props.assignment.date.toDateString().slice(4, 10)}
+          {props.assignment.DueDate}
         </p>
         {notify ? (
           <FontAwesomeIcon

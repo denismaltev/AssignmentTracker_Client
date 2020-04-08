@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import Logo from "../assets/Logo.png";
+import firebase from "./authentication/firebase";
 
 // fake data must be replaced with data from DB
 const fakeDataArray = [
@@ -38,37 +39,46 @@ export default function MyAssignments() {
   const [completed, setCompleted] = useState(true);
   const [assignments, setAssignments] = useState([]);
 
-  const URL = "https://nameless-headland-04100.herokuapp.com/api/assignments";
+  const API_URL = process.env.REACT_APP_API_URL;
 
   const getMyAssignmentsFromServer = async () => {
     // Here fetch request GET
     var result = fakeDataArray;
 
-    fetch(URL, {
+    let JWTtoken = await (
+      await firebase.auth().currentUser.getIdTokenResult()
+    ).token;
+    if (JWTtoken !== null){
+
+    await fetch(API_URL + "/assignments", {
+      method: "GET",
       headers: {
-        "Access-Control-Allow-Origin": "*",
-        'Access-Control-Allow-Credentials': 'true',
-        "Access-Control-Allow-Methods": "*",
+        Accept: "application/json",
         "Content-Type": "application/json",
-        Accept: "application/json"
+        Authorization: `Bearer ${JWTtoken}`
       },
     })
     .then((response) => {
       return response.json();
     })
     .then((json) => {
+      console.log("test")
+      console.log(JWTtoken)
+      console.log(json.length)
       console.log(json)
-          // sort assignments by date
+      //sort assignments by date
       json.sort((a, b) => {
-      return a.date.getTime() - b.date.getTime();
+        console.log(typeof a.DueDate)
+      return a.DueDate.getTime() - b.DueDate.getTime();
     });
     setAssignments(json);
     })
 
     .catch(function (error) {
-      //alert(error)
+      console.log(error)
     })
   }
+}
 
   useEffect(() => {
     getMyAssignmentsFromServer();
@@ -117,9 +127,9 @@ export default function MyAssignments() {
         </Link>
         {assignments.map(assignment =>
           (completed && assignment.isDone) || (active && !assignment.isDone) ? (
-            <Assignment key={assignment.title} assignment={assignment} />
+            <Assignment key={assignment._id} assignment={assignment} />
           ) : (
-            <p key={assignment.title}></p>
+            <p key={assignment._id}></p>
           )
         )}
       </div>
