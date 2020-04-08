@@ -33,13 +33,14 @@ export default function AddAssignment() {
             Authorization: `Bearer ${JWTtoken}`
           },
           body: JSON.stringify({
-            Name: title.value,
-            Description: description.value,
-            DueDate: date.value
+            title: title.value,
+            description: description.value,
+            date: date.value
           })
         });
         if (result.status === 200) {
           alert("New assignment was successfully added");
+          window.location.href = "/";
         } else {
           alert("ERROR: Something went wrong. Please try again");
         }

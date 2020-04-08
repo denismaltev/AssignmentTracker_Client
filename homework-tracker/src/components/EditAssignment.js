@@ -42,9 +42,9 @@ export default function EditAssignment(props) {
             Authorization: `Bearer ${JWTtoken}`
           },
           body: JSON.stringify({
-            Name: title.value,
-            Description: description.value,
-            DueDate: date.value
+            title: title.value,
+            description: description.value,
+            date: date.value
           })
         });
         if(result.status === 200) {

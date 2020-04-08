@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 export default function Assignment(props) {
   const [refreshComponent, setRefreshComponent] = useState(false);
   const [isShown, setIsShown] = useState(false);
-  const [notify, setNotify] = useState(false);
+  const [notification, setNotification] = useState("incomplete");
   const today = new Date();
 
   useEffect(() => {
@@ -23,14 +23,6 @@ export default function Assignment(props) {
     setRefreshComponent(true);
   }
 
-  function isNotifyChange() {
-    if (notify) {
-      setNotify(false);
-    } else {
-      setNotify(true);
-    }
-  }
-
   function isAssignmentExpired() {
     return today.getTime() - props.assignment.date.getTime() > 0 &&
       !props.assignment.isDone
@@ -44,12 +36,16 @@ export default function Assignment(props) {
 
   function assignmentStatus() {
     if (props.assignment.isDone) {
+      setNotification("complete")
       return <div className="complete">DONE</div>;
     } else if (isAssignmentExpired() && daysLeft() < 0) {
+      setNotification("late")
       return <div className="late">LATE!</div>;
     } else if (daysLeft() === 0) {
+      setNotification("incomplete")
       return <div className="incomplete">TODAY!</div>;
     } else {
+      setNotification("incomplete")
       return <div className="incomplete">{daysLeft()} days left</div>;
     }
   }
@@ -113,19 +109,9 @@ export default function Assignment(props) {
           <span className="DueDateTitle">Due Date: </span>
           {props.assignment.date.toDateString().slice(4, 10)}
         </p>
-        {notify ? (
-          <FontAwesomeIcon
-            className="notification notifyOn"
-            icon={faBell}
-            onClick={isNotifyChange}
-          />
-        ) : (
-          <FontAwesomeIcon
-            className="notification notifyOff"
-            icon={faBell}
-            onClick={isNotifyChange}
-          />
-        )}
+        <FontAwesomeIcon
+        className={notification}
+        icon={faBell} />
       </div>
       {assignmentStatus()}
     </div>

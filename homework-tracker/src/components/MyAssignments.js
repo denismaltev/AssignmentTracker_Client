@@ -54,7 +54,21 @@ export default function MyAssignments() {
           "Content-Type": "application/json",
           Authorization: `Bearer ${JWTtoken}`
         }
-      });
+      })
+    //   .then((response) => {
+    //     return response.json();
+    //   })
+    //   .then((json => {
+    //     json.sort((a, b) => {
+    //     return a.date.getTime() - b.date.getTime();
+    //   });
+    //   setAssignments(json);
+    //   }))
+    //   .catch(function(error) {
+    //     console.log(error)
+    //   }
+    //   )
+    // }};
       const server_result = await response.json();
 
       //console.log(server_result);
@@ -63,11 +77,11 @@ export default function MyAssignments() {
       var result = [];
       server_result.forEach(el => {
         result.push({
-          title: el.Name,
-          description: el.Description,
-          date: new Date(el.DueDate.slice(0, 10)),
+          title: el.title,
+          description: el.description,
+          date: new Date(el.date.slice(0, 10)),
           isDone: el.isDone,
-          id: el._id
+          id: el._id,
         });
       });
       console.log(result);
@@ -75,9 +89,9 @@ export default function MyAssignments() {
       result.sort((a, b) => {
         return a.date.getTime() - b.date.getTime();
       });
-      setAssignments(result);
+      setAssignments(result); 
     }
-  };
+  };    
 
   useEffect(() => {
     getMyAssignmentsFromServer();
