@@ -51,6 +51,7 @@ export default function EditAssignment(props) {
         });
         if(result.status === 200) {
           alert("Updated Assignment!");
+          window.location.href = "/";
         } else {
           alert("Error: Something went wrong, please try again")
         }
