@@ -3,9 +3,11 @@ import Logo from "../assets/Logo.png";
 import { Link } from "react-router-dom";
 import { faCalendar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import firebase from "./authentication/firebase";
 
 export default function AddAssignment() {
   const [errorMessage, setErrorMesage] = useState("");
+  const API_URL = process.env.REACT_APP_API_URL;
 
   const createAssignment = async event => {
     event.preventDefault();
@@ -16,9 +18,33 @@ export default function AddAssignment() {
       setErrorMesage("Error: Please fill all required fields");
     } else {
       setErrorMesage("");
-      alert(`POST-request: ${title.value} ${description.value} ${date.value}`);
+
+      // POST request
+      let JWTtoken = await (
+        await firebase.auth().currentUser.getIdTokenResult()
+      ).token;
+      console.log(JWTtoken); // Do not forget to DELETE
+      if (JWTtoken !== null) {
+        const result = await fetch(API_URL + "assignments", {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${JWTtoken}`
+          },
+          body: JSON.stringify({
+            Name: title.value,
+            Description: description.value,
+            DueDate: date.value
+          })
+        });
+        if (result.status === 200) {
+          alert("New assignment was successfully added");
+        } else {
+          alert("ERROR: Something went wrong. Please try again");
+        }
+      }
     }
-    // Here should be POST-request
     document.getElementById("add-assignment-form").reset();
   };
 
@@ -55,8 +81,8 @@ export default function AddAssignment() {
             placeholder="Description (optional)"
           />
           <div className="dueDate">
-          <input name="date" type="date" placeholder="Due Date" />
-          <FontAwesomeIcon className="calendar" icon={faCalendar} />
+            <input name="date" type="date" placeholder="Due Date" />
+            <FontAwesomeIcon className="calendar" icon={faCalendar} />
           </div>
           <div className="buttons">
             <button className="cancel" onClick={clearForm}>

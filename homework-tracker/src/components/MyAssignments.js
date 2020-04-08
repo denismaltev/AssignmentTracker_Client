@@ -66,7 +66,8 @@ export default function MyAssignments() {
           title: el.Name,
           description: el.Description,
           date: new Date(el.DueDate.slice(0, 10)),
-          isDone: el.isDone
+          isDone: el.isDone,
+          id: el._id
         });
       });
       console.log(result);
@@ -127,7 +128,7 @@ export default function MyAssignments() {
           (completed && assignment.isDone) || (active && !assignment.isDone) ? (
             <Assignment key={assignment.title} assignment={assignment} />
           ) : (
-            <p key={assignment.title}></p>
+            <p key={assignment.id}></p>
           )
         )}
       </div>
