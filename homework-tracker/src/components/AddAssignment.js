@@ -35,9 +35,9 @@ export default function AddAssignment() {
           body: JSON.stringify({
             //email: "email@email.com", // Do not forget to DELETE
             //userID: "1234", // Do not forget to DELETE
-            Name: title.value,
-            Description: description.value,
-            DueDate: date.value
+            title: title.value,
+            description: description.value,
+            date: date.value
           })
         });
         if (result.status === 200) {

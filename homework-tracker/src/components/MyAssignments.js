@@ -55,21 +55,13 @@ export default function MyAssignments() {
           Authorization: `Bearer ${JWTtoken}`
         }
       });
-      const server_result = await response.json();
+      const result = await response.json();
 
-      //console.log(server_result);
-
-      // Converter
-      var result = [];
-      server_result.forEach(el => {
-        result.push({
-          title: el.Name,
-          description: el.Description,
-          date: new Date(el.DueDate.slice(0, 10)),
-          isDone: el.isDone
-        });
+      // Date converter
+      result.forEach(el => {
+        el.date = new Date(el.date.slice(0, 10));
       });
-      console.log(result);
+
       // sort assignments by date
       result.sort((a, b) => {
         return a.date.getTime() - b.date.getTime();
