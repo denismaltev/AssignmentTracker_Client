@@ -54,44 +54,21 @@ export default function MyAssignments() {
           "Content-Type": "application/json",
           Authorization: `Bearer ${JWTtoken}`
         }
-      })
-    //   .then((response) => {
-    //     return response.json();
-    //   })
-    //   .then((json => {
-    //     json.sort((a, b) => {
-    //     return a.date.getTime() - b.date.getTime();
-    //   });
-    //   setAssignments(json);
-    //   }))
-    //   .catch(function(error) {
-    //     console.log(error)
-    //   }
-    //   )
-    // }};
-      const server_result = await response.json();
-
-      //console.log(server_result);
-
-      // Converter
-      var result = [];
-      server_result.forEach(el => {
-        result.push({
-          title: el.title,
-          description: el.description,
-          date: new Date(el.date.slice(0, 10)),
-          isDone: el.isDone,
-          id: el._id,
-        });
       });
-      console.log(result);
+      const result = await response.json();
+
+      // Date converter
+      result.forEach(el => {
+        el.date = new Date(el.date.slice(0, 10));
+      });
+
       // sort assignments by date
       result.sort((a, b) => {
         return a.date.getTime() - b.date.getTime();
       });
-      setAssignments(result); 
+      setAssignments(result);
     }
-  };    
+  };
 
   useEffect(() => {
     getMyAssignmentsFromServer();
@@ -142,7 +119,7 @@ export default function MyAssignments() {
           (completed && assignment.isDone) || (active && !assignment.isDone) ? (
             <Assignment key={assignment.title} assignment={assignment} />
           ) : (
-            <p key={assignment.id}></p>
+            <p key={assignment.title}></p>
           )
         )}
       </div>
