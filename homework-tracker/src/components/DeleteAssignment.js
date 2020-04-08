@@ -15,7 +15,7 @@ export default function DeleteAssignment(props) {
     let JWTtoken = await (
       await firebase.auth().currentUser.getIdTokenResult()).token;
       if (JWTtoken !== null) {
-        const id = assignment.id
+        const id = assignment._id
         const result = await fetch(API_URL + "assignments/" + id, {
           method:"DELETE",
           headers: {

@@ -33,7 +33,8 @@ export default function EditAssignment(props) {
         await firebase.auth().currentUser.getIdTokenResult()
       ).token;
       if(JWTtoken !== null) {
-        const id = assignment.id
+        const id = assignment._id
+        console.log(id)
         const result = await fetch(API_URL + "assignments/" + id, {
           method: "PUT",
           headers: {
