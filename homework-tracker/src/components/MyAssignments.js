@@ -11,6 +11,7 @@ export default function MyAssignments() {
   const [completed, setCompleted] = useState(true);
   const [assignments, setAssignments] = useState([]);
   const API_URL = process.env.REACT_APP_API_URL;
+  const timezoneOffset = new Date().getTimezoneOffset() * 60000;
 
   const getMyAssignmentsFromServer = async () => {
     // Here fetch request GET
@@ -30,7 +31,7 @@ export default function MyAssignments() {
 
       // Date converter
       result.forEach(el => {
-        el.date = new Date(el.date.slice(0, 10));
+        el.date = new Date(Date.parse(el.date) + timezoneOffset);
       });
 
       // sort assignments by date
