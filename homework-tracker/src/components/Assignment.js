@@ -23,26 +23,6 @@ export default function Assignment(props) {
     setRefreshComponent(true);
   }
 
-  // function isNotifyChange() {
-  //   if (notify) {
-  //     setNotify(false);
-  //   } else {
-  //     setNotify(true);
-  //   }
-  // }
-
-  // function isNotifyDueDate() {
-  //   if (notify) {
-  //     var currentDay = props.assignment.date.getTme() - today.getTime();
-
-  //     if (currentDay < 3) {
-  //       alert(
-  //         `${currentDay} days left until ${props.assignment.title} is due!`
-  //       );
-  //     }
-  //   }
-  // }
-
   function isAssignmentExpired() {
     return today.getTime() - props.assignment.date.getTime() > 0 &&
       !props.assignment.isDone
@@ -128,19 +108,6 @@ export default function Assignment(props) {
           {props.assignment.date.toDateString().slice(4, 10)}
         </p>
         <FontAwesomeIcon className={notification} icon={faBell} />
-        {/* {notify ? (
-          <FontAwesomeIcon
-            className="notification notifyOn"
-            icon={faBell}
-            onClick={isNotifyChange}
-          />
-        ) : (
-          <FontAwesomeIcon
-            className="notification notifyOff"
-            icon={faBell}
-            onClick={isNotifyChange}
-          />
-        )} */}
       </div>
       {assignmentStatus()}
     </div>

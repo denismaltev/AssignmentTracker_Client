@@ -56,8 +56,6 @@ export default function AddAssignment() {
   };
   useEffect(() => {}, [errorMessage]);
 
-  const today = new Date().toISOString().substr(0, 10);
-
   return (
     <div>
       <div className="header">
