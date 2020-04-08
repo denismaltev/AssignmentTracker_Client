@@ -24,7 +24,7 @@ export default function AddAssignment() {
         await firebase.auth().currentUser.getIdTokenResult()
       ).token;
       if (JWTtoken !== null) {
-        await fetch(API_URL + "assignments", {
+        const result = await fetch(API_URL + "assignments", {
           method: "POST",
           headers: {
             Accept: "application/json",
@@ -32,24 +32,20 @@ export default function AddAssignment() {
             Authorization: `Bearer ${JWTtoken}`
           },
           body: JSON.stringify({
-            email: "email@email.com",
-            userID: "1234",
+            email: "email@email.com", // Do not forget to DELETE
+            userID: "1234", // Do not forget to DELETE
             Name: title.value,
             Description: description.value,
             DueDate: date.value
           })
-          // .then(res => res.json())
-          // .then(data => {
-          //   console.log(data);
-          // })
-          // .catch(err => {
-          //   console.log(err);
-          // })
         });
+        if (result.status === 200) {
+          alert("New assignment was successfully added");
+        } else {
+          alert("ERROR: Something went wrong. Please try again");
+        }
       }
-      //console.log(JWTtoken);
     }
-    // Here should be POST-request
     document.getElementById("add-assignment-form").reset();
   };
 
