@@ -3,6 +3,7 @@ import Logo from "../assets/Logo.png";
 import { Link } from "react-router-dom";
 import { faCalendar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import firebase from "./authentication/firebase";
 
 export default function AddAssignment() {
   const [errorMessage, setErrorMesage] = useState("");
@@ -17,8 +18,36 @@ export default function AddAssignment() {
       setErrorMesage("Error: Please fill all required fields");
     } else {
       setErrorMesage("");
-      alert(`POST-request: ${title.value} ${description.value} ${date.value}`);
-      alert(API_URL);
+
+      // POST request
+      let JWTtoken = await (
+        await firebase.auth().currentUser.getIdTokenResult()
+      ).token;
+      if (JWTtoken !== null) {
+        await fetch(API_URL + "assignments", {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${JWTtoken}`
+          },
+          body: JSON.stringify({
+            email: "email@email.com",
+            userID: "1234",
+            Name: title.value,
+            Description: description.value,
+            DueDate: date.value
+          })
+          // .then(res => res.json())
+          // .then(data => {
+          //   console.log(data);
+          // })
+          // .catch(err => {
+          //   console.log(err);
+          // })
+        });
+      }
+      //console.log(JWTtoken);
     }
     // Here should be POST-request
     document.getElementById("add-assignment-form").reset();
