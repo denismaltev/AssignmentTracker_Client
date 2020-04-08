@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 export default function Assignment(props) {
   const [refreshComponent, setRefreshComponent] = useState(false);
   const [isShown, setIsShown] = useState(false);
-  const [notify, setNotify] = useState(false);
+  const [notification, setNotification] = useState("notification-incomplete");
   const today = new Date();
 
   useEffect(() => {
@@ -23,25 +23,25 @@ export default function Assignment(props) {
     setRefreshComponent(true);
   }
 
-  function isNotifyChange() {
-    if (notify) {
-      setNotify(false);
-    } else {
-      setNotify(true);
-    }
-  }
+  // function isNotifyChange() {
+  //   if (notify) {
+  //     setNotify(false);
+  //   } else {
+  //     setNotify(true);
+  //   }
+  // }
 
-  function isNotifyDueDate() {
-    if (notify) {
-      var currentDay = props.assignment.date.getTme() - today.getTime();
+  // function isNotifyDueDate() {
+  //   if (notify) {
+  //     var currentDay = props.assignment.date.getTme() - today.getTime();
 
-      if (currentDay < 3) {
-        alert(
-          `${currentDay} days left until ${props.assignment.title} is due!`
-        );
-      }
-    }
-  }
+  //     if (currentDay < 3) {
+  //       alert(
+  //         `${currentDay} days left until ${props.assignment.title} is due!`
+  //       );
+  //     }
+  //   }
+  // }
 
   function isAssignmentExpired() {
     return today.getTime() - props.assignment.date.getTime() > 0 &&
@@ -56,8 +56,10 @@ export default function Assignment(props) {
 
   function assignmentStatus() {
     if (props.assignment.isDone) {
+      setNotification("notification-complete");
       return <div className="complete">DONE</div>;
     } else if (isAssignmentExpired() && daysLeft() < 0) {
+      setNotification("notification-late");
       return <div className="late">LATE!</div>;
     } else if (daysLeft() === 0) {
       return <div className="incomplete">TODAY!</div>;
@@ -125,7 +127,8 @@ export default function Assignment(props) {
           <span className="DueDateTitle">Due Date: </span>
           {props.assignment.date.toDateString().slice(4, 10)}
         </p>
-        {notify ? (
+        <FontAwesomeIcon className={notification} icon={faBell} />
+        {/* {notify ? (
           <FontAwesomeIcon
             className="notification notifyOn"
             icon={faBell}
@@ -137,7 +140,7 @@ export default function Assignment(props) {
             icon={faBell}
             onClick={isNotifyChange}
           />
-        )}
+        )} */}
       </div>
       {assignmentStatus()}
     </div>

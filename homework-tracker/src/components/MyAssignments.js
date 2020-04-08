@@ -119,7 +119,7 @@ export default function MyAssignments() {
           (completed && assignment.isDone) || (active && !assignment.isDone) ? (
             <Assignment key={assignment.title} assignment={assignment} />
           ) : (
-            <p key={assignment.title}></p>
+            <p key={assignment._id}></p>
           )
         )}
       </div>
