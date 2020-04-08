@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function AddAssignment() {
   const [errorMessage, setErrorMesage] = useState("");
+  const API_URL = process.env.REACT_APP_API_URL;
 
   const createAssignment = async event => {
     event.preventDefault();
@@ -17,6 +18,7 @@ export default function AddAssignment() {
     } else {
       setErrorMesage("");
       alert(`POST-request: ${title.value} ${description.value} ${date.value}`);
+      alert(API_URL);
     }
     // Here should be POST-request
     document.getElementById("add-assignment-form").reset();
@@ -55,8 +57,8 @@ export default function AddAssignment() {
             placeholder="Description (optional)"
           />
           <div className="dueDate">
-          <input name="date" type="date" placeholder="Due Date" />
-          <FontAwesomeIcon className="calendar" icon={faCalendar} />
+            <input name="date" type="date" placeholder="Due Date" />
+            <FontAwesomeIcon className="calendar" icon={faCalendar} />
           </div>
           <div className="buttons">
             <button className="cancel" onClick={clearForm}>
