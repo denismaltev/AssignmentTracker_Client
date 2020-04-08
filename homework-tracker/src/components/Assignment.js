@@ -17,8 +17,10 @@ export default function Assignment(props) {
   function isDoneChange() {
     if (props.assignment.isDone) {
       props.assignment.isDone = false;
+      setNotification("notification-incomplete")
     } else {
       props.assignment.isDone = true;
+      setNotification("notification-complete")
     }
     setRefreshComponent(true);
   }
@@ -42,16 +44,6 @@ export default function Assignment(props) {
       return <div className="incomplete">TODAY!</div>;
     } else {
       return <div className="incomplete">{daysLeft()} days left</div>;
-    }
-  }
-
-  function notificationStatus() {
-    if(props.assignment.isDone) {
-      return  <div className="notification-complete"></div>
-      setNotification("notification-complete")
-    }  else {
-      return <div className="notification-incomplete"></div>
-      setNotification("notification-incomplete")
     }
   }
 
