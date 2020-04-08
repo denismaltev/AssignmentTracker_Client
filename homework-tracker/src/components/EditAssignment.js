@@ -3,6 +3,7 @@ import Logo from "../assets/Logo.png";
 import { Link } from "react-router-dom";
 import { faCalendar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import firebase from "./authentication/firebase";
 
 export default function EditAssignment(props) {
   const assignment = props.location.state.assignment;
@@ -10,6 +11,8 @@ export default function EditAssignment(props) {
   const [title, setTitle] = useState(assignment.title);
   const [description, setDescription] = useState(assignment.description);
   const [date, setDate] = useState(assignment.date.toISOString().slice(0, 10));
+
+  const API_URL = process.env.REACT_APP_API_URL;
 
   const createAssignment = async event => {
     event.preventDefault();
@@ -26,7 +29,34 @@ export default function EditAssignment(props) {
     } else {
       setErrorMesage("");
       // Here should be PUT-request
-      alert(`PUT-request: ${title.value} ${description.value} ${date.value}`);
+      let JWTtoken = await (
+        await firebase.auth().currentUser.getIdTokenResult()
+      ).token;
+      if(JWTtoken !== null) {
+        const id = assignment._id
+        console.log(id)
+        const result = await fetch(API_URL + "assignments/" + id, {
+          method: "PUT",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${JWTtoken}`
+          },
+          body: JSON.stringify({
+            title: title.value,
+            description: description.value,
+            date: date.value
+          })
+        });
+        if(result.status === 200) {
+          alert("Updated Assignment!");
+          window.location.href = "/";
+        } else {
+          alert("Error: Something went wrong, please try again")
+        }
+      }
+
+      //alert(`PUT-request: ${title.value} ${description.value} ${date.value}`);
     }
     document.getElementById("add-assignment-form").reset();
   };

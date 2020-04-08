@@ -230,16 +230,19 @@ svg {
   padding-right: .5rem;
 }
 
-.notification {
+.notification-incomplete {
   font-size: 1.7rem;
+  color: $main-color-opacity
 }
 
-.notifyOff {
+.notification-complete {
+  font-size: 1.7rem;
   color: $grey;
 }
 
-.notifyOn {
-  color: $secondary-color;
+.notification-late {
+  font-size: 1.7rem;
+  color: $secondary-color-opacity;
 }
 
 .late {

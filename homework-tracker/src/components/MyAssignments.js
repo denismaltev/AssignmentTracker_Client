@@ -4,49 +4,70 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import Logo from "../assets/Logo.png";
+import firebase from "./authentication/firebase";
 
 // fake data must be replaced with data from DB
-const fakeDataArray = [
-  {
-    title: "Final Assignment - SSD",
-    description: "Group Project Web APP",
-    date: new Date(2020, 2, 20),
-    isDone: false
-  },
-  {
-    title: "FullStack JS",
-    description: " bla bla bla",
-    date: new Date(2020, 3, 6),
-    isDone: false
-  },
-  {
-    title: "Passion Project",
-    description: "bla bla bla2",
-    date: new Date(2020, 4, 22),
-    isDone: true
-  },
-  {
-    title: "bla bla Project",
-    description: "bla bla bla3",
-    date: new Date(2020, 5, 1),
-    isDone: true
-  }
-];
+// const fakeDataArray = [
+//   {
+//     title: "Final Assignment - SSD",
+//     description: "Group Project Web APP",
+//     date: new Date(2020, 2, 20),
+//     isDone: false
+//   },
+//   {
+//     title: "FullStack JS",
+//     description: " bla bla bla",
+//     date: new Date(2020, 3, 6),
+//     isDone: false
+//   },
+//   {
+//     title: "Passion Project",
+//     description: "bla bla bla2",
+//     date: new Date(2020, 4, 22),
+//     isDone: true
+//   },
+//   {
+//     title: "bla bla Project",
+//     description: "bla bla bla3",
+//     date: new Date(2020, 5, 1),
+//     isDone: true
+//   }
+// ];
 
 export default function MyAssignments() {
   const [active, setActive] = useState(true);
   const [completed, setCompleted] = useState(true);
   const [assignments, setAssignments] = useState([]);
+  const API_URL = process.env.REACT_APP_API_URL;
 
   const getMyAssignmentsFromServer = async () => {
     // Here fetch request GET
-    var result = fakeDataArray;
+    //var result = fakeDataArray;
+    let JWTtoken = await (await firebase.auth().currentUser.getIdTokenResult())
+      .token;
+    console.log(JWTtoken); // Do not forget to DELETE
+    if (JWTtoken !== null) {
+      const response = await fetch(API_URL + "assignments", {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${JWTtoken}`
+        }
+      });
+      const result = await response.json();
 
-    // sort assignments by date
-    result.sort((a, b) => {
-      return a.date.getTime() - b.date.getTime();
-    });
-    setAssignments(result);
+      // Date converter
+      result.forEach(el => {
+        el.date = new Date(el.date.slice(0, 10));
+        console.log(el._id)
+      });
+      // sort assignments by date
+      result.sort((a, b) => {
+        return a.date.getTime() - b.date.getTime();
+      });
+      setAssignments(result);
+    }
   };
 
   useEffect(() => {
@@ -98,7 +119,7 @@ export default function MyAssignments() {
           (completed && assignment.isDone) || (active && !assignment.isDone) ? (
             <Assignment key={assignment.title} assignment={assignment} />
           ) : (
-            <p key={assignment.title}></p>
+            <p key={assignment._id}></p>
           )
         )}
       </div>
