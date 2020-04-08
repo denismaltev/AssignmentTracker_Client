@@ -60,8 +60,8 @@ export default function MyAssignments() {
       // Date converter
       result.forEach(el => {
         el.date = new Date(el.date.slice(0, 10));
-        console.log(el._id)
       });
+
       // sort assignments by date
       result.sort((a, b) => {
         return a.date.getTime() - b.date.getTime();

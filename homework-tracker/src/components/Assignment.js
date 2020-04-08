@@ -56,10 +56,10 @@ export default function Assignment(props) {
 
   function assignmentStatus() {
     if (props.assignment.isDone) {
-      setNotification("notification-complete")
+      setNotification("notification-complete");
       return <div className="complete">DONE</div>;
     } else if (isAssignmentExpired() && daysLeft() < 0) {
-      setNotification("notification-late")
+      setNotification("notification-late");
       return <div className="late">LATE!</div>;
     } else if (daysLeft() === 0) {
       return <div className="incomplete">TODAY!</div>;
@@ -127,10 +127,7 @@ export default function Assignment(props) {
           <span className="DueDateTitle">Due Date: </span>
           {props.assignment.date.toDateString().slice(4, 10)}
         </p>
-        <FontAwesomeIcon 
-          className={notification}
-          icon={faBell}
-        />
+        <FontAwesomeIcon className={notification} icon={faBell} />
         {/* {notify ? (
           <FontAwesomeIcon
             className="notification notifyOn"
