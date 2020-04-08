@@ -34,8 +34,6 @@ export default function EditAssignment(props) {
       ).token;
       if(JWTtoken !== null) {
         const id = assignment.id
-        console.log(id);
-        console.log(title.value, description.value)
         const result = await fetch(API_URL + "assignments/" + id, {
           method: "PUT",
           headers: {
