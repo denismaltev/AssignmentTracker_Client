@@ -35,8 +35,10 @@ export default function Assignment(props) {
     if (notify) {
       var currentDay = props.assignment.date.getTme() - today.getTime();
 
-      if(currentDay < 3) {
-      alert(`${currentDay} days left until ${props.assignment.title} is due!`)
+      if (currentDay < 3) {
+        alert(
+          `${currentDay} days left until ${props.assignment.title} is due!`
+        );
       }
     }
   }
@@ -101,7 +103,7 @@ export default function Assignment(props) {
             <Link
               to={{
                 pathname: "/edit",
-                state: { assignment: props.assignment },
+                state: { assignment: props.assignment }
               }}
             >
               <FontAwesomeIcon icon={faPen} className="edit" />
@@ -109,7 +111,7 @@ export default function Assignment(props) {
             <Link
               to={{
                 pathname: "/delete",
-                state: { assignment: props.assignment },
+                state: { assignment: props.assignment }
               }}
             >
               <FontAwesomeIcon className="delete" icon={faTimes} />

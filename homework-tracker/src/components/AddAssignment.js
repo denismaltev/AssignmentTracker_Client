@@ -23,6 +23,7 @@ export default function AddAssignment() {
       let JWTtoken = await (
         await firebase.auth().currentUser.getIdTokenResult()
       ).token;
+      console.log(JWTtoken); // Do not forget to DELETE
       if (JWTtoken !== null) {
         const result = await fetch(API_URL + "assignments", {
           method: "POST",
@@ -32,8 +33,8 @@ export default function AddAssignment() {
             Authorization: `Bearer ${JWTtoken}`
           },
           body: JSON.stringify({
-            email: "email@email.com", // Do not forget to DELETE
-            userID: "1234", // Do not forget to DELETE
+            //email: "email@email.com", // Do not forget to DELETE
+            //userID: "1234", // Do not forget to DELETE
             Name: title.value,
             Description: description.value,
             DueDate: date.value
