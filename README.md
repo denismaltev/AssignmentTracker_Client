@@ -3,6 +3,8 @@ Final Project SSD (Athena, Denis, Tara, Thomas)
 
 Homework tracking app.
 
+![Demo Video](video/homework.gif)
+
 ## Deliverables
 * Must-Have Features
     * Authentication
