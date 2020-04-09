@@ -87,6 +87,16 @@ export default function MyAssignments() {
             icon={faPlusCircle}
           />
         </Link>
+        {assignments.length === 0 ? (
+          <div className="brand">
+            <h2>
+              No Assignments. Please click the button to start adding
+              assignments
+            </h2>
+          </div>
+        ) : (
+          <></>
+        )}
         {assignments.map(assignment =>
           (completed && assignment.isDone) || (active && !assignment.isDone) ? (
             <Assignment key={assignment.title} assignment={assignment} />
