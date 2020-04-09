@@ -98,7 +98,7 @@ export default function MyAssignments() {
         )}
         {assignments.map(assignment =>
           (completed && assignment.isDone) || (active && !assignment.isDone) ? (
-            <Assignment key={assignment.title} assignment={assignment} />
+            <Assignment key={assignment._id} assignment={assignment} />
           ) : (
             <p key={assignment._id}></p>
           )
