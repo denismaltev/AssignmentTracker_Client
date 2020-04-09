@@ -23,7 +23,6 @@ export default function AddAssignment() {
       let JWTtoken = await (
         await firebase.auth().currentUser.getIdTokenResult()
       ).token;
-      console.log(JWTtoken); // Do not forget to DELETE
       if (JWTtoken !== null) {
         const result = await fetch(API_URL + "assignments", {
           method: "POST",
@@ -39,7 +38,6 @@ export default function AddAssignment() {
           })
         });
         if (result.status === 200) {
-          alert("New assignment was successfully added");
           window.location.href = "/";
         } else {
           alert("ERROR: Something went wrong. Please try again");

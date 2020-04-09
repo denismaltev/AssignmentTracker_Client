@@ -13,6 +13,11 @@ h1, h2, h3, h4 {
   font-weight: 400;
 }
 
+.brand h2 {
+  font-family: $body-font;
+  text-align: center;
+}
+
 .wrapper {
   position: relative;
   min-height: 100%;

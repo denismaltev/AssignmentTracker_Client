@@ -17,7 +17,6 @@ export default function MyAssignments() {
     // Here fetch request GET
     let JWTtoken = await (await firebase.auth().currentUser.getIdTokenResult())
       .token;
-    console.log(JWTtoken); // Do not forget to DELETE
     if (JWTtoken !== null) {
       const response = await fetch(API_URL + "assignments", {
         method: "GET",

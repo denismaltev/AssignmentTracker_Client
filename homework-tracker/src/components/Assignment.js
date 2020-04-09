@@ -18,7 +18,6 @@ export default function Assignment(props) {
       .token;
     if (JWTtoken !== null) {
       const id = props.assignment._id;
-      console.log(id);
       const result = await fetch(API_URL + "assignments/" + id, {
         method: "PUT",
         headers: {
@@ -31,7 +30,6 @@ export default function Assignment(props) {
         })
       });
       if (result.status === 200) {
-        //alert("Updated Assignment!");
       } else {
         alert("Error: Something went wrong, please try again");
       }
@@ -61,19 +59,6 @@ export default function Assignment(props) {
       ? true
       : false;
   }
-
-  // function NotificationStatus() {
-  //   if(props.assignment.isDone) {
-  //     setNotification("notification-complete")
-  //   } else if(isAssignmentExpired && !props.assignment.isDone) {
-  //     setNotification("notification-late")
-  //   } else if(!props.assignment.isDone && daysLeft() === 0) {
-  //     setNotification("notification-today")
-  //   } else {
-  //     setNotification("notification-incomplete")
-  //   }
-  //   setRefreshComponent(true)
-  // }
 
   function daysLeft() {
     return Math.ceil((props.assignment.date - today) / 1000 / 60 / 60 / 24);
