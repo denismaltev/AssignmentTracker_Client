@@ -6,7 +6,7 @@ Homework tracking app.
 ## Deliverables
 * Must-Have Features
     * Authentication
-      * Create & Delete User
+      * Create User
     * Assignment
       * Create Assignment
       * Delete Assignment
@@ -28,6 +28,10 @@ Homework tracking app.
     * Share assignments with other users
     * Add assignments to calendar
     
+## Homework Helper Preview
+![Image of Screens](images/2.png)
+![Image of Screens](images/3.png)
+![Image of Screens](images/4.png)
 
 ## Prototypye
 [Check it out here](https://xd.adobe.com/view/c04e3ed0-7a42-49be-5973-41fd2cdefff8-b67f/)
