@@ -10,30 +10,10 @@ export default function Assignment(props) {
   const [isShown, setIsShown] = useState(false);
   const [notification, setNotification] = useState("notification-incomplete");
   const today = new Date();
-
-  useEffect(() => {
-    setRefreshComponent(false);
-  }, [refreshComponent]);
-
-  function isDoneChange() {
-    if (props.assignment.isDone) {
-      props.assignment.isDone = false;
-      setNotification("notification-incomplete");
-      //postIsDone()
-    } else {
-      props.assignment.isDone = true;
-      setNotification("notification-complete");
-      //postIsDone()
-    }
-    setRefreshComponent(true);
-  }
-
   const API_URL = process.env.REACT_APP_API_URL;
 
-  // NEEDS WORK
-  const postIsDone = async event => {
-    //event.preventDefault();
-    const { isDone } = event.target.elements;
+  // isDone PUT request
+  const postIsDone = async isDone => {
     let JWTtoken = await (await firebase.auth().currentUser.getIdTokenResult())
       .token;
     if (JWTtoken !== null) {
@@ -47,17 +27,33 @@ export default function Assignment(props) {
           Authorization: `Bearer ${JWTtoken}`
         },
         body: JSON.stringify({
-          isDone: isDone.value
+          isDone: isDone
         })
       });
       if (result.status === 200) {
-        alert("Updated Assignment!");
+        //alert("Updated Assignment!");
       } else {
         alert("Error: Something went wrong, please try again");
       }
     }
-    document.getElementById("add-assignment-form").reset();
   };
+
+  useEffect(() => {
+    setRefreshComponent(false);
+  }, [refreshComponent]);
+
+  function isDoneChange() {
+    if (props.assignment.isDone) {
+      props.assignment.isDone = false;
+      setNotification("notification-incomplete");
+      postIsDone(false);
+    } else {
+      props.assignment.isDone = true;
+      setNotification("notification-complete");
+      postIsDone(true);
+    }
+    setRefreshComponent(true);
+  }
 
   function isAssignmentExpired() {
     return today.getTime() - props.assignment.date.getTime() > 0 &&
