@@ -17,6 +17,7 @@ export default function EditAssignment(props) {
   const createAssignment = async event => {
     event.preventDefault();
     const { title, description, date } = event.target.elements;
+
     // Validation
     if (title.value === "" || date.value === "") {
       setErrorMesage("Error: Please fill all required fields");
@@ -28,13 +29,14 @@ export default function EditAssignment(props) {
       setErrorMesage("No changes detected");
     } else {
       setErrorMesage("");
+
       // Here should be PUT-request
       let JWTtoken = await (
         await firebase.auth().currentUser.getIdTokenResult()
       ).token;
-      if(JWTtoken !== null) {
-        const id = assignment._id
-        console.log(id)
+      if (JWTtoken !== null) {
+        const id = assignment._id;
+        console.log(id);
         const result = await fetch(API_URL + "assignments/" + id, {
           method: "PUT",
           headers: {
@@ -48,15 +50,12 @@ export default function EditAssignment(props) {
             date: date.value
           })
         });
-        if(result.status === 200) {
-          alert("Updated Assignment!");
+        if (result.status === 200) {
           window.location.href = "/";
         } else {
-          alert("Error: Something went wrong, please try again")
+          alert("Error: Something went wrong, please try again");
         }
       }
-
-      //alert(`PUT-request: ${title.value} ${description.value} ${date.value}`);
     }
     document.getElementById("add-assignment-form").reset();
   };
@@ -81,8 +80,11 @@ export default function EditAssignment(props) {
         </div>
       </div>
       <div className="Card">
-        <form onSubmit={createAssignment} id="add-assignment-form"
-        className="addAssignmentForm">
+        <form
+          onSubmit={createAssignment}
+          id="add-assignment-form"
+          className="addAssignmentForm"
+        >
           <p style={{ color: "red", fontSize: 12 }}>{errorMessage}</p>
           <input
             onChange={event => {
@@ -103,22 +105,24 @@ export default function EditAssignment(props) {
             placeholder="Description (optional)"
           />
           <div className="dueDate">
-          <input
-            onChange={event => {
-              setDate(event.target.value);
-            }}
-            value={date}
-            name="date"
-            type="date"
-            placeholder="Due Date"
-          />
-          <FontAwesomeIcon className="calendar" icon={faCalendar} />
+            <input
+              onChange={event => {
+                setDate(event.target.value);
+              }}
+              value={date}
+              name="date"
+              type="date"
+              placeholder="Due Date"
+            />
+            <FontAwesomeIcon className="calendar" icon={faCalendar} />
           </div>
-           <div className="buttons">
-          <button className="cancel" onClick={clearForm}>Cancel</button>
-          <button className="submit" variant="" type="submit">
-            Save
-          </button>
+          <div className="buttons">
+            <button className="cancel" onClick={clearForm}>
+              Cancel
+            </button>
+            <button className="submit" variant="" type="submit">
+              Save
+            </button>
           </div>
         </form>
       </div>
