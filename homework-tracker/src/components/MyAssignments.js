@@ -14,7 +14,7 @@ export default function MyAssignments() {
   const timezoneOffset = new Date().getTimezoneOffset() * 60000;
 
   const getMyAssignmentsFromServer = async () => {
-    // Here fetch request GET
+    // GET All assignments
     let JWTtoken = await (await firebase.auth().currentUser.getIdTokenResult())
       .token;
     if (JWTtoken !== null) {
@@ -23,13 +23,13 @@ export default function MyAssignments() {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          Authorization: `Bearer ${JWTtoken}`
-        }
+          Authorization: `Bearer ${JWTtoken}`,
+        },
       });
       const result = await response.json();
 
       // Date converter
-      result.forEach(el => {
+      result.forEach((el) => {
         el.date = new Date(Date.parse(el.date) + timezoneOffset);
       });
 
@@ -96,7 +96,7 @@ export default function MyAssignments() {
         ) : (
           <></>
         )}
-        {assignments.map(assignment =>
+        {assignments.map((assignment) =>
           (completed && assignment.isDone) || (active && !assignment.isDone) ? (
             <Assignment key={assignment._id} assignment={assignment} />
           ) : (

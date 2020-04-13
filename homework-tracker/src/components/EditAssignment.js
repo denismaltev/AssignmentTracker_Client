@@ -14,7 +14,7 @@ export default function EditAssignment(props) {
 
   const API_URL = process.env.REACT_APP_API_URL;
 
-  const createAssignment = async event => {
+  const createAssignment = async (event) => {
     event.preventDefault();
     const { title, description, date } = event.target.elements;
 
@@ -30,7 +30,7 @@ export default function EditAssignment(props) {
     } else {
       setErrorMesage("");
 
-      // Here should be PUT-request
+      // PUT-request
       let JWTtoken = await (
         await firebase.auth().currentUser.getIdTokenResult()
       ).token;
@@ -41,13 +41,13 @@ export default function EditAssignment(props) {
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
-            Authorization: `Bearer ${JWTtoken}`
+            Authorization: `Bearer ${JWTtoken}`,
           },
           body: JSON.stringify({
             title: title.value,
             description: description.value,
-            date: date.value
-          })
+            date: date.value,
+          }),
         });
         if (result.status === 200) {
           window.location.href = "/";
@@ -59,7 +59,7 @@ export default function EditAssignment(props) {
     document.getElementById("add-assignment-form").reset();
   };
 
-  const clearForm = event => {
+  const clearForm = (event) => {
     event.preventDefault();
     setTitle(assignment.title);
     setDescription(assignment.description);
@@ -86,7 +86,7 @@ export default function EditAssignment(props) {
         >
           <p style={{ color: "red", fontSize: 12 }}>{errorMessage}</p>
           <input
-            onChange={event => {
+            onChange={(event) => {
               setTitle(event.target.value);
             }}
             value={title}
@@ -95,7 +95,7 @@ export default function EditAssignment(props) {
             placeholder="Title"
           />
           <input
-            onChange={event => {
+            onChange={(event) => {
               setDescription(event.target.value);
             }}
             value={description}
@@ -105,7 +105,7 @@ export default function EditAssignment(props) {
           />
           <div className="dueDate">
             <input
-              onChange={event => {
+              onChange={(event) => {
                 setDate(event.target.value);
               }}
               value={date}

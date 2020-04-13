@@ -9,7 +9,7 @@ export default function AddAssignment() {
   const [errorMessage, setErrorMesage] = useState("");
   const API_URL = process.env.REACT_APP_API_URL;
 
-  const createAssignment = async event => {
+  const createAssignment = async (event) => {
     event.preventDefault();
     const { title, description, date } = event.target.elements;
 
@@ -29,15 +29,15 @@ export default function AddAssignment() {
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
-            Authorization: `Bearer ${JWTtoken}`
+            Authorization: `Bearer ${JWTtoken}`,
           },
           body: JSON.stringify({
             title: title.value,
             description: description.value,
-            date: date.value
-          })
+            date: date.value,
+          }),
         });
-        if (result.status === 200) {
+        if (result.status === 201) {
           window.location.href = "/";
         } else {
           alert("ERROR: Something went wrong. Please try again");
@@ -47,7 +47,7 @@ export default function AddAssignment() {
     document.getElementById("add-assignment-form").reset();
   };
 
-  const clearForm = event => {
+  const clearForm = (event) => {
     event.preventDefault();
     document.getElementById("add-assignment-form").reset();
     setErrorMesage("");

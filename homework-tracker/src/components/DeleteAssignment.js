@@ -7,10 +7,9 @@ import firebase from "./authentication/firebase";
 
 export default function DeleteAssignment(props) {
   const assignment = props.location.state.assignment;
-
   const API_URL = process.env.REACT_APP_API_URL;
 
-  const deleteAssignment = async event => {
+  const deleteAssignment = async (event) => {
     // DELETE request HERE
     let JWTtoken = await (await firebase.auth().currentUser.getIdTokenResult())
       .token;
@@ -21,8 +20,8 @@ export default function DeleteAssignment(props) {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          Authorization: `Bearer ${JWTtoken}`
-        }
+          Authorization: `Bearer ${JWTtoken}`,
+        },
       });
       if (result.status === 200) {
         window.location.href = "/";
