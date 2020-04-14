@@ -41,3 +41,6 @@ Homework tracking app.
 
 ![Image of Screens](images/1.png)
 
+## Server part (code)
+NodeJS, Express, MongoDB
+[CODE](https://github.com/Den79/AssignmentTracker_Server/)
