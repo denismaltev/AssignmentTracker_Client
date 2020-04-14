@@ -1,7 +1,17 @@
-# finalProjectSSD - Homework Tracker
+# Homework/Assignment Tracker
 Final Project SSD (Athena, Denis, Tara, Thomas)
 
-Homework tracking app.
+## App
+
+[Check it out here](https://assignment-tracker-client.herokuapp.com/)
+
+## Technologies used
+
+HTML, CSS, JavaScript, ReactJS, NodeJS, Express, MongoDB, Mongoose, FireBase(Authentication)
+
+Heroku: Front-end & Back-end
+
+Atlas: Database (MongoDB)
 
 ## Deliverables
 * Must-Have Features
