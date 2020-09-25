@@ -1,6 +1,7 @@
 # finalProjectSSD - Homework Tracker
 Final Project SSD (Athena, Denis, Tara, Thomas)
 
+## Try application
 [Homework tracking app.](https://assignment-tracker-client.herokuapp.com/)
 
 ## Deliverables
