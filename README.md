@@ -1,5 +1,5 @@
 # Homework/Assignment Tracker
-Final Project SSD (Athena, Denis, Tara, Thomas)
+Final Project SSD (Athena, Denis, Tara)
 
 ## App
 
